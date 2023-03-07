@@ -1,0 +1,36 @@
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #d6703f transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #d6703f;
+    border-radius: 10px;
+    border: 3px solid transparent;
+}
+
+#bill_items {
+    height: 50vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#total_money,
+#total_quantity {
+    font-weight: bold;
+    margin-left: 10px;
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 0;
+}
