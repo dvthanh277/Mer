@@ -64,15 +64,16 @@ const getProducts = async () => {
             <h6 class="heading-title fw-bolder mt-4 mb-0">
               ${element.name}
             </h6>
-            <p class="mt-1 mb-0 pb-4   iq-calories small">Đã bán: ${element.sold
-          }</p>
+            <p class="mt-1 mb-0 pb-4   iq-calories small">Đã bán: ${
+              element.sold
+            }</p>
             <div class="d-flex mt-1 flex-wrap">
               ${element.sizes
-            .map((size) => {
-              return `<div class="d-flex align-items-center justify-content-between col-12 mb-2">
+                .map((size) => {
+                  return `<div class="d-flex align-items-center justify-content-between col-12 mb-2">
                 <span class="text-primary fw-bolder me-2">${formatNumber(
-                size.price
-              )} đ</span
+                  size.price
+                )} đ</span
                 >
                 <div onclick="handleAddItem('${element.id}','${size.name}')">
                 <span class="fw-bolder mr-2 text-left">${size.name}</span>
@@ -111,8 +112,8 @@ const getProducts = async () => {
                 />
               </svg> </div>
               </div>`;
-            })
-            .join("")}
+                })
+                .join("")}
               
               
             </div>
@@ -150,18 +151,21 @@ const renderBill = () => {
               ${element.name} (Size: ${element.size})
             </h6>
             <span class="d-flex align-items-center">
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${element.invoiceId
-          }')"> - </button>
-              <small class="text-dark fw-bold ms-3 me-3">x ${element.quantity
-          }</small>
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncrease('${element.invoiceId
-          }')"> + </button>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${
+                element.invoiceId
+              }')"> - </button>
+              <small class="text-dark fw-bold ms-3 me-3">x ${
+                element.quantity
+              }</small>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncrease('${
+                element.invoiceId
+              }')"> + </button>
 
             </span>
           </div>
         </div>
         <div class="me-4 text-end">
-          <span class="mb-1">
+          <span class="mb-1" onclick="handleDelete('${element.invoiceId}')">
             <svg
               width="20"
               height="20"
@@ -205,7 +209,19 @@ window.handleDecrease = (invoice_id) => {
   console.log(index);
   if (index !== -1) {
     bills[index].quantity -= 1;
+
     bills[index].total = bills[index].quantity * bills[index].price;
+  }
+  if (bills[index].quantity == 0) {
+    bills.splice(index, 1);
+  }
+  renderBill();
+};
+window.handleDelete = (invoice_id) => {
+  const index = bills.findIndex((element) => element.invoiceId === invoice_id);
+  console.log(index);
+  if (index !== -1) {
+    bills.splice(index, 1);
   }
   renderBill();
 };
