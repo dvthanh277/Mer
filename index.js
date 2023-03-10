@@ -11,6 +11,21 @@ var bills = [];
 window.onload = async function () {
   getProducts();
   search_input.focus();
+  search_input.addEventListener("input", function (e) {
+    handleSearch(search_input.value);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    switch (event.code) {
+      case "F1":
+        console.log("You just pressed F1!");
+        printPage();
+        break;
+      case "F2":
+        console.log("You just pressed F2!");
+        break;
+    }
+  });
 };
 
 window.handleAddItem = (id, size) => {
@@ -36,7 +51,7 @@ window.handleAddItem = (id, size) => {
     bills.push(item);
   }
 
-  renderBill();
+  renderBill(bills);
 };
 window.returnItemInfo = (id) => {
   const copy = [...products];
@@ -46,8 +61,11 @@ window.returnItemInfo = (id) => {
 
 const getProducts = async () => {
   products = await API.getData("product");
-  if (products) {
-    menu_items.innerHTML = products
+  renderProduct(products);
+};
+const renderProduct = (data) => {
+  if (data) {
+    menu_items.innerHTML = data
       .map((element) => {
         return `<div class="col">
         <div
@@ -126,8 +144,8 @@ const getProducts = async () => {
 };
 var total_money = 0;
 var total_quantity = 0;
-const renderBill = () => {
-  if (bills) {
+const renderBill = (data) => {
+  if (data) {
     total_money = 0;
     total_quantity = 0;
     bill_items.innerHTML = bills
@@ -202,7 +220,7 @@ window.handleIncrease = (invoice_id) => {
     bills[index].quantity += 1;
     bills[index].total = bills[index].quantity * bills[index].price;
   }
-  renderBill();
+  renderBill(bills);
 };
 window.handleDecrease = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
@@ -215,7 +233,7 @@ window.handleDecrease = (invoice_id) => {
   if (bills[index].quantity == 0) {
     bills.splice(index, 1);
   }
-  renderBill();
+  renderBill(bills);
 };
 window.handleDelete = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
@@ -223,10 +241,29 @@ window.handleDelete = (invoice_id) => {
   if (index !== -1) {
     bills.splice(index, 1);
   }
-  renderBill();
+  renderBill(bills);
 };
+window.handleSearch = (search_value) => {
+  let bill_search = [...products];
+  if (!search_value) {
+    renderProduct(products);
+    return;
+  }
+  bill_search = bill_search.filter(
+    (element) =>
+      element.name.toLowerCase().includes(search_value.toLowerCase()) == true ||
+      toSlug(element.name).includes(search_value.toLowerCase()) == true
+  );
+  renderProduct(bill_search);
+};
+function toSlug(str) {
+  str = str.toLowerCase();
+  str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return str;
+}
+
 window.printPage = () => {
-  if (!bills) return;
+  if (!bills || bills.length <= 0) return;
 
   let currentdate = new Date();
   let date =
