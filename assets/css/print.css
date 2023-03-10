@@ -3,44 +3,46 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    display: none;
     /* justify-content: space-between; */
 }
 
-* {
+#printContent * {
     margin: 0;
     padding: 0;
     font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.print-item {
+#printContent .print-item {
     max-width: 126px;
     min-width: 126px;
     padding: 5px;
     position: relative;
 }
 
-.print-time {
+#printContent .print-time {
     position: absolute;
     right: 4px;
     top: 4px;
 }
-.print-item span {
+
+#printContent .print-item span {
     font-size: 8px;
 }
 
-.time {
+#printContent .time {
     padding-left: 5px;
 }
 
-.print-shop {
+#printContent .print-shop {
     font-weight: bold;
     border-bottom: 1px solid;
     padding-bottom: 4px;
     margin-bottom: 4px;
 }
 
-.print-title {
+#printContent .print-title {
     font-weight: bold;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -48,9 +50,106 @@
     overflow: hidden;
 }
 
-.print-price {
+#printContent .print-price {
     text-align: right;
     padding-right: 10px;
     padding-top: 14px;
     font-weight: bold;
+}
+
+#printBill {
+    width: 219px;
+}
+
+#printBill * {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#printBill img {
+    width: 100%;
+}
+
+#printBill .logo-bill {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#printBill .bold {
+    font-weight: bold;
+}
+
+#printBill .bill-address {
+    text-align: center;
+    font-size: 10px;
+}
+
+#printBill .phone {
+    margin-top: 3px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 11px;
+    border-bottom: 1px dashed;
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 12px;
+}
+
+#printBill .title {
+    padding: 12px 0 0;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+#printBill .bill-time {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#printBill .time {
+    margin-right: 5px;
+}
+
+#printBill .items {
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+}
+
+#printBill .items table {
+    width: 100%;
+    table-layout: fixed;
+
+}
+
+#printBill .items table td {
+    padding: 4px 0;
+    vertical-align: top;
+    border-bottom: 1px dotted;
+}
+
+#printBill .items table tfoot td {
+    border-bottom: none;
+    font-weight: bold;
+}
+
+#printBill .items table td:first-child {
+    width: 68%;
+}
+
+#printBill .items table td:nth-of-type(2) {
+    text-align: center;
+}
+
+#printBill .items table td:last-child {
+    width: 20%;
+    text-align: right;
+}
+
+#printBill .thank {
+    text-align: center;
+    padding: 20px 0 10px;
+    font-style: italic;
 }
