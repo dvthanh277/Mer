@@ -294,7 +294,6 @@ window.printPage = () => {
       printBill.push(element);
     }
   });
-  console.log(printBill);
   // let content = bills.map((element) => {
   //   if (element.quantity > 1) {
   //   } else {
@@ -321,6 +320,83 @@ window.printPage = () => {
   ); // định dạng trang in
   printWindow.document.write("</head><body><div id='printContent'>");
   printWindow.document.write(printContent.innerHTML); // in nội dung muốn in vào trang in mới
+  printWindow.document.write("</div></body></html>");
+  printWindow.document.close(); // đóng trang in mới
+  setTimeout(function () {
+    printWindow.print(); // thực hiện lệnh in trang in mới
+    printWindow.close(); // đóng trang in mới sau khi in xong
+  }, 500);
+};
+window.printBill = () => {
+  if (!bills || bills.length <= 0) return;
+
+  let currentdate = new Date();
+  let total = 0;
+  let date =
+    (currentdate.getDate() < 10
+      ? "0" + currentdate.getDate()
+      : currentdate.getDate()) +
+    "/" +
+    (currentdate.getMonth() + 1 < 10
+      ? "0" + (currentdate.getMonth() + 1)
+      : currentdate.getMonth() + 1);
+  +currentdate.getFullYear;
+
+  let time =
+    (currentdate.getHours() < 10
+      ? "0" + currentdate.getHours()
+      : currentdate.getHours()) +
+    ":" +
+    (currentdate.getMinutes() < 10
+      ? "0" + currentdate.getMinutes()
+      : currentdate.getMinutes());
+
+  var printBill = document.getElementById("printBill"); // lấy nội dung muốn in
+  printBill.innerHTML = `
+  <div class="logo-bill">
+        <img src="./assets/images/logoBill.png" alt="" />
+      </div>
+      <p class="bill-address bold">E39 tổ 3, ấp Phước Thiện, xã Phước Tỉnh</p>
+      <p class="bill-address">(Hẻm nhà hàng Minh Phương vào 100m)</p>
+      <p class="bill-address phone">SDT: 05634.03465</p>
+      <div class="bill-item">
+        <p class="title">PHIẾU THANH TOÁN</p>
+        <p class="bill-time">
+          <span class="time">${time}</span><span class="date">${date}</span>
+        </p>
+        <div class="items">
+          <table>
+            <tbody>
+            ${bills
+              .map((element) => {
+                console.log(element);
+                total += element.total;
+                return `<tr>
+                <td>${element.name} (${element.size})</td>
+                <td>x${element.quantity}</td>
+                <td>${formatNumber(element.total)}</td>
+              </tr>`;
+              })
+              .join("")}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">Tổng tiền</td>
+                <td>${formatNumber(total)}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="thank">♥ Cám ơn quý khách và hẹn gặp lại ♥</p>
+      </div>
+      `;
+  var printWindow = window.open("", "", "width=1280,height=720"); // mở cửa sổ in mới với kích thước 72x22mm
+  printWindow.document.write("<html><head><title>Print Page</title>"); // tạo tiêu đề cho trang in
+  printWindow.document.write(
+    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="./assets/css/print.css" />'
+  ); // định dạng trang in
+  printWindow.document.write("</head><body><div id='printBill'>");
+  printWindow.document.write(printBill.innerHTML); // in nội dung muốn in vào trang in mới
   printWindow.document.write("</div></body></html>");
   printWindow.document.close(); // đóng trang in mới
   setTimeout(function () {

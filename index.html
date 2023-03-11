@@ -395,7 +395,10 @@
                       >
                         In tem (F1)
                       </button>
-                      <button class="btn btn-success rounded-pill">
+                      <button
+                        class="btn btn-success rounded-pill"
+                        onclick="printBill()"
+                      >
                         Tính tiền (F2)
                       </button>
                     </div>
@@ -406,7 +409,6 @@
           </div>
         </div>
       </div>
-      <div id="printContent"></div>
       <!-- Footer Section Start -->
       <footer class="footer">
         <div class="footer-body">
@@ -422,6 +424,7 @@
       <!-- Footer Section End -->
     </main>
     <div id="printContent"></div>
+    <div id="printBill"></div>
     <!-- Wrapper End-->
     <!-- Required Library Bundle Script -->
     <script src="./assets/js/core/libs.min.js"></script>
