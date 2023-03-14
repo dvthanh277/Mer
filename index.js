@@ -216,7 +216,7 @@ const renderBill = (data) => {
       .map((element, index) => {
         total_quantity += element.quantity;
         total_money += element.total;
-        return `  <div class="rounded-pill bg-soft-primary iq-my-cart">
+        return `  <div class=" bill-item iq-my-cart">
       <div
         class="d-flex align-items-center justify-content-between profile-img4"
       >
@@ -279,9 +279,9 @@ const renderBill = (data) => {
         .map((topping) => {
           return `
         <div class="d-flex align-items-center justify-content-between profile-img4">
-        <div class="d-flex align-items-center profile-content">
+        <div class="d-flex align-items-center profile-content" style="margin-left: 125px">
           <div>
-            <h6 class="mb-1 heading-title fw-bolder">
+            <h6 class="mb-1 heading-title">
               ${topping.name}
             </h6>
             <span class="d-flex align-items-center">
@@ -427,7 +427,7 @@ window.printPage = () => {
         ? `<span class="old-price">${formatNumber(
             element.price
           )}đ</span>${formatNumber(element.total)}đ`
-        : `${formatNumber(element.total)}đ`
+        : `${formatNumber(element.price)}đ`
     }</p>
     
   </div>`;

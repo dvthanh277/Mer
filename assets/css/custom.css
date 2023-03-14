@@ -39,7 +39,7 @@
     margin: 0 auto;
     width: 50%;
     background: #fff;
-    /* display: none; */
+    display: none;
 }
 
 #printBill {
@@ -50,4 +50,12 @@
     font-size: 14px;
     text-decoration: line-through;
     padding-right: 10px;
+}
+
+.bill-item {
+    border-bottom: 2px solid;
+}
+
+.iq-my-cart {
+    margin-top: 1.5rem;
 }
