@@ -437,5 +437,52 @@
             "sold": 0,
             "type": "COFFEE"
         }
+    ],
+    "topping": [
+        {
+            "id": "TP001",
+            "name": "Trân châu",
+            "price": 5000
+        },
+        {
+            "id": "TP002",
+            "name": "Pudding",
+            "price": 7000
+        },
+        {
+            "id": "TP003",
+            "name": "Bánh plan",
+            "price": 7000
+        },
+        {
+            "id": "TP004",
+            "name": "Thạch dừa",
+            "price": 5000
+        },
+        {
+            "id": "TP005",
+            "name": "Thạch củ năng",
+            "price": 5000
+        },
+        {
+            "id": "TP006",
+            "name": "Thạch khoai môn",
+            "price": 5000
+        },
+        {
+            "id": "TP007",
+            "name": "Phô mai tươi",
+            "price": 5000
+        },
+        {
+            "id": "TP008",
+            "name": "Phô mai viên",
+            "price": 7000
+        },
+        {
+            "id": "TP009",
+            "name": "Milk foam",
+            "price": 7000
+        }
     ]
 }

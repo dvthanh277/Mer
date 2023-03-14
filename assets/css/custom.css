@@ -36,9 +36,18 @@
 }
 
 #printContent {
-    display: none;
+    margin: 0 auto;
+    width: 50%;
+    background: #fff;
+    /* display: none; */
 }
 
 #printBill {
     display: none;
+}
+
+.old-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    padding-right: 10px;
 }
