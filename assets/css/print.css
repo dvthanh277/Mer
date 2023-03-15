@@ -16,6 +16,10 @@
 #printContent .old-price {
     text-decoration: line-through;
     padding-right: 5px;
+    position: absolute;
+    top: 50px;
+    text-align: right;
+    right: 10px;
 }
 
 #printContent .print-item {
@@ -62,6 +66,7 @@
 
 #printContent .print-topping {
     min-height: 14px;
+    height: 30px;
 }
 
 #printContent .print-topping span {
