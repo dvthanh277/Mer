@@ -318,10 +318,21 @@ const renderBill = (data) => {
     </div>`;
       })
       .join("");
-    total_money_element.innerHTML = formatNumber(total_money) + "đ";
-    total_quantity_element.innerHTML =
-      "Tổng cộng: " + total_quantity + " món - ";
+    if (total_money > 0) {
+      total_money_element.innerHTML = formatNumber(total_money) + "đ";
+      total_quantity_element.innerHTML =
+        "Tổng cộng: " + total_quantity + " món - ";
+    } else {
+      total_money_element.innerHTML = "";
+      total_quantity_element.innerHTML = "";
+    }
   }
+};
+window.newBill = () => {
+  topping_adds = [];
+  bills = [];
+  renderBill(bills);
+  renderToppingBill(topping_adds);
 };
 const renderToppingBill = (data) => {
   if (data) {
