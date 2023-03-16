@@ -3,6 +3,7 @@ import { formatNumber } from "./js/common/numbers.utils.js";
 const menu_items = document.querySelector("#menu_items");
 const topping_items = document.querySelector("#topping_items");
 const bill_items = document.querySelector("#bill_items");
+const bill_topping = document.querySelector("#topping_add");
 const search_input = document.querySelector("#search_input");
 const total_quantity_element = document.querySelector("#total_quantity");
 const total_money_element = document.querySelector("#total_money");
@@ -84,7 +85,6 @@ window.handleAddItemTopping = () => {
   $("#toppingModal").modal("hide");
   topping_adds = [];
   renderBill(bills);
-  console.log(bills);
 };
 window.returnItemInfo = (id) => {
   const copy = [...products];
@@ -204,7 +204,7 @@ window.handleAddTopping = (id_topping) => {
     topping_adds.push(item);
   }
   console.log(topping_adds);
-  // renderToppingAdd(topping_adds);
+  renderToppingBill(topping_adds);
 };
 var total_money = 0;
 var total_quantity = 0;
@@ -316,6 +316,22 @@ const renderBill = (data) => {
     total_quantity_element.innerHTML =
       "Tổng cộng: " + total_quantity + " ly - ";
   }
+};
+const renderToppingBill = (data) => {
+  if (data) {
+    bill_topping.innerHTML = data
+      .map((element, index) => {
+        return `<p></p> <p style="
+        margin: 0;
+        font-weight: bold;">${element.name} x${element.quantity}</p>`;
+      })
+      .join("");
+  }
+};
+window.closeAddTopping = () => {
+  topping_adds = [];
+  renderToppingBill(topping_adds);
+  $("#toppingModal").modal("hide");
 };
 window.handleIncrease = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
