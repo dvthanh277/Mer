@@ -77,3 +77,42 @@
 .swiper-slide .category-menu .card-body {
     padding: 1rem;
 }
+
+.category-image {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px;
+}
+
+.category-image img {
+    width: 100%;
+}
+
+.navbar {
+    position: fixed !important;
+    width: calc(100% - 4.5rem);
+    z-index: 10;
+    top: 0;
+}
+
+.main-noidung {
+    padding-top: 70px !important;
+}
+
+.profile-img4 .profile-img11 {
+    position: absolute;
+    transform: none;
+    top: 0;
+}
+
+.profile-img4 .profile-content {
+    margin-left: 90px;
+}
+
+.dish-card .menu-image {
+    margin-top: 10px;
+}
+
+.avatar-100 {
+    border: 3px solid #d6703f;
+}

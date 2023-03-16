@@ -110,14 +110,14 @@ const renderProduct = (data) => {
   if (data) {
     menu_items.innerHTML = data
       .map((element) => {
-        return `<div class="col-4">
+        return `<div class="col-12 col-md-6 col-xl-4 col-xxl-4">
         <div
           class="card card-white dish-card profile-img mb-0 index"
         >
           <div class="profile-img21">
             <img
               src="./assets/images/menu/${element.image}"
-              class="img-fluid rounded-pill avatar-170"
+              class="img-fluid rounded-pill avatar-100"
               alt="profile-image"
             />
           </div>
@@ -227,14 +227,16 @@ const renderBill = (data) => {
         <div class="profile-img11">
           <img
             src="./assets/images/menu/${element.image}"
-            class="img-fluid rounded-pill avatar-115"
+            class="img-fluid rounded-pill avatar-80"
             alt="img"
           />
         </div>
         <div class="d-flex align-items-center profile-content">
           <div>
             <h6 class="mb-1 heading-title fw-bolder">
-              ${element.name} (Size: ${element.size})
+              ${element.name}  ${
+          element.group == "NUOC" ? `(${element.size})` : ``
+        }
             </h6>
             <span class="d-flex align-items-center">
               <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${
@@ -274,7 +276,7 @@ const renderBill = (data) => {
             element.topping.length > 0
               ? `<span class="old-price">${formatNumber(
                   element.price
-                )}đ</span>${formatNumber(element.total)} đ`
+                )}đ</span>${formatNumber(element.total)}đ`
               : `${formatNumber(element.total)}đ`
           }</p>
         </div>
@@ -308,7 +310,7 @@ const renderBill = (data) => {
               <path d="M21 5.97686C21 5.56588 20.6761 5.24389 20.2871 5.24389H17.3714C16.7781 5.24389 16.2627 4.8219 16.1304 4.22692L15.967 3.49795C15.7385 2.61698 14.9498 2 14.0647 2H9.93624C9.0415 2 8.26054 2.61698 8.02323 3.54595L7.87054 4.22792C7.7373 4.8219 7.22185 5.24389 6.62957 5.24389H3.71385C3.32386 5.24389 3 5.56588 3 5.97686V6.35685C3 6.75783 3.32386 7.08982 3.71385 7.08982H20.2871C20.6761 7.08982 21 6.75783 21 6.35685V5.97686Z" fill="#E60A0A"></path>
             </svg>
           </span>
-          <p class="mb-0 text-dark">${formatNumber(topping.total)} đ</p>
+          <p class="mb-0 text-dark">${formatNumber(topping.total)}đ</p>
         </div>
       </div>`;
         })
@@ -316,9 +318,9 @@ const renderBill = (data) => {
     </div>`;
       })
       .join("");
-    total_money_element.innerHTML = formatNumber(total_money) + " đ";
+    total_money_element.innerHTML = formatNumber(total_money) + "đ";
     total_quantity_element.innerHTML =
-      "Tổng cộng: " + total_quantity + " ly - ";
+      "Tổng cộng: " + total_quantity + " món - ";
   }
 };
 const renderToppingBill = (data) => {
@@ -409,8 +411,19 @@ function toSlug(str) {
   // return
   return str;
 }
-window.handleClickCategory = (category) => {
-  console.log(category);
+const slides = document.querySelectorAll(".swiper-slide .card");
+window.handleClickCategory = (category, event) => {
+  slides.forEach(function (item) {
+    item.classList.remove("active");
+  });
+  console.log(event.querySelector(".card").classList.add("active"));
+  if (category === "ALL") {
+    renderProduct(products);
+    return;
+  }
+  let temp = products.filter((pro) => pro.type == category);
+  renderProduct(temp);
+  console.log(temp);
 };
 window.printPage = () => {
   if (!bills || bills.length <= 0) return;
