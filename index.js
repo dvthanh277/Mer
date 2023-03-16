@@ -17,7 +17,6 @@ window.onload = async function () {
   search_input.addEventListener("input", function (e) {
     handleSearch(search_input.value);
   });
-
   document.addEventListener("keydown", function (event) {
     switch (event.code) {
       case "F1":
@@ -49,6 +48,8 @@ window.handleAddItem = (id, size) => {
       quantity: 1,
       topping: [],
       total: price,
+      group: product[0].group,
+      type: product[0].type,
     };
     bills.push(item);
   }
@@ -80,6 +81,8 @@ window.handleAddItemTopping = () => {
     idProduct: product[0].id,
     total: price_total,
     topping: topping_adds,
+    group: product[0].group,
+    type: product[0].type,
   };
   bills.push(item);
   $("#toppingModal").modal("hide");
@@ -99,7 +102,7 @@ window.returnToppingItem = (id) => {
 const getProducts = async () => {
   products = await API.getData("product");
   topping = await API.getData("topping");
-  console.log(topping);
+  console.log(products);
   renderProduct(products);
   renderTopping(topping);
 };
@@ -107,7 +110,7 @@ const renderProduct = (data) => {
   if (data) {
     menu_items.innerHTML = data
       .map((element) => {
-        return `<div class="col">
+        return `<div class="col-4">
         <div
           class="card card-white dish-card profile-img mb-0 index"
         >
@@ -131,18 +134,19 @@ const renderProduct = (data) => {
                   return `<div class="d-flex align-items-center justify-content-between col-12 mb-2">
                 <span class="text-primary fw-bolder me-2">${formatNumber(
                   size.price
-                )} đ</span>
+                )}</span>
                 <div class="d-flex align-items-center justify-content-between">
             
               <button class="btn btn-success btn-sm rounded-pill fw-bolder" onclick="handleAddItem('${
                 element.id
               }','${size.name}')" style="min-width:47px">
             ${size.name}</button>
-
-              <button class="btn btn-warning btn-xs rounded-pill ms-3" onclick="openToppingModal('${
-                element.id
-              }','${size.name}')">
-              Topping</button>
+              ${
+                element.group == "NUOC"
+                  ? `    <button class="btn btn-warning btn-xs rounded-pill ms-3" onclick="openToppingModal('${element.id}','${size.name}')">
+              Topping</button>`
+                  : ``
+              }
               </div>
               </div>`;
                 })
@@ -372,16 +376,42 @@ window.handleSearch = (search_value) => {
   bill_search = bill_search.filter(
     (element) =>
       element.name.toLowerCase().includes(search_value.toLowerCase()) == true ||
-      toSlug(element.name).includes(search_value.toLowerCase()) == true
+      toSlug(element.name.toLowerCase()).includes(search_value.toLowerCase()) ==
+        true
   );
   renderProduct(bill_search);
 };
 function toSlug(str) {
+  // Chuyển hết sang chữ thường
   str = str.toLowerCase();
-  str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // xóa dấu
+  str = str.replace(/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/g, "a");
+  str = str.replace(/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/g, "e");
+  str = str.replace(/(ì|í|ị|ỉ|ĩ)/g, "i");
+  str = str.replace(/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/g, "o");
+  str = str.replace(/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/g, "u");
+  str = str.replace(/(ỳ|ý|ỵ|ỷ|ỹ)/g, "y");
+  str = str.replace(/(đ)/g, "d");
+
+  // Xóa ký tự đặc biệt
+  str = str.replace(/([^0-9a-z-\s])/g, "");
+
+  // Xóa ký tự - liên tiếp
+  str = str.replace(/-+/g, "-");
+
+  // xóa phần dự - ở đầu
+  str = str.replace(/^-+/g, "");
+
+  // xóa phần dư - ở cuối
+  str = str.replace(/-+$/g, "");
+
+  // return
   return str;
 }
-
+window.handleClickCategory = (category) => {
+  console.log(category);
+};
 window.printPage = () => {
   if (!bills || bills.length <= 0) return;
 
@@ -405,15 +435,17 @@ window.printPage = () => {
       : currentdate.getMinutes());
 
   var printBill = [];
-  bills.map((element) => {
-    if (element.quantity > 1) {
-      for (let i = 0; i < element.quantity; i++) {
+  bills
+    .filter((pro) => pro.group == "NUOC")
+    .map((element) => {
+      if (element.quantity > 1) {
+        for (let i = 0; i < element.quantity; i++) {
+          printBill.push(element);
+        }
+      } else {
         printBill.push(element);
       }
-    } else {
-      printBill.push(element);
-    }
-  });
+    });
   // let content = bills.map((element) => {
   //   if (element.quantity > 1) {
   //   } else {
@@ -537,7 +569,9 @@ window.printBill = () => {
                 </tr>`;
                 } else {
                   return `<tr>
-                  <td>${element.name} (${element.size})</td>
+                  <td>${element.name} ${
+                    element.group == "NUOC" ? `(${element.size})` : ``
+                  }</td>
                   <td>x${element.quantity}</td>
                   <td>${formatNumber(element.total)}</td>
                 </tr>`;

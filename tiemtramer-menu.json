@@ -16,6 +16,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -34,6 +35,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -52,6 +54,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -70,6 +73,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -88,6 +92,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -106,6 +111,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -141,6 +147,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRASUA"
         },
         {
@@ -155,6 +162,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -169,6 +177,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -183,6 +192,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -197,6 +207,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -211,6 +222,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -225,6 +237,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -239,6 +252,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -253,6 +267,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -267,6 +282,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -281,6 +297,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -295,6 +312,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "MILKFOAM"
         },
         {
@@ -309,6 +327,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "MILKFOAM"
         },
         {
@@ -323,6 +342,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "MILKFOAM"
         },
         {
@@ -337,6 +357,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "TRA"
         },
         {
@@ -351,6 +372,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "SUATUOI"
         },
         {
@@ -365,6 +387,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "SUATUOI"
         },
         {
@@ -379,6 +402,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "SUATUOI"
         },
         {
@@ -393,6 +417,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "COFFEE"
         },
         {
@@ -407,6 +432,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "COFFEE"
         },
         {
@@ -421,6 +447,7 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "COFFEE"
         },
         {
@@ -435,7 +462,53 @@
                 }
             ],
             "sold": 0,
+            "group": "NUOC",
             "type": "COFFEE"
+        },
+        {
+            "cost": 0,
+            "id": 10279,
+            "image": "default.png",
+            "name": "Bánh Donut",
+            "sizes": [
+                {
+                    "name": "M",
+                    "price": 6000
+                }
+            ],
+            "sold": 0,
+            "group": "BANH",
+            "type": "BANH"
+        },
+        {
+            "cost": 0,
+            "id": 10280,
+            "image": "default.png",
+            "name": "Bánh trứng muối",
+            "sizes": [
+                {
+                    "name": "M",
+                    "price": 35000
+                }
+            ],
+            "sold": 0,
+            "group": "BANH",
+            "type": "BANH"
+        },
+        {
+            "cost": 0,
+            "id": 10281,
+            "image": "default.png",
+            "name": "Bánh su kem",
+            "sizes": [
+                {
+                    "name": "M",
+                    "price": 35000
+                }
+            ],
+            "sold": 0,
+            "group": "BANH",
+            "type": "BANH"
         }
     ],
     "topping": [

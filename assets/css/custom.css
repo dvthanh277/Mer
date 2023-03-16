@@ -59,3 +59,21 @@
 .iq-my-cart {
     margin-top: 1.5rem;
 }
+
+.category-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-bottom: 6px;
+}
+
+.category-title::before {
+    border-bottom: none !important;
+}
+
+.swiper-slide {
+    margin-right: 10px !important;
+}
+
+.swiper-slide .category-menu .card-body {
+    padding: 1rem;
+}
