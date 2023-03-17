@@ -513,11 +513,11 @@ window.printPage = () => {
   printWindow.document.write("</head><body><div id='printContent'>");
   printWindow.document.write(printContent.innerHTML); // in nội dung muốn in vào trang in mới
   printWindow.document.write("</div></body></html>");
-  // printWindow.document.close(); // đóng trang in mới
-  // setTimeout(function () {
-  //   printWindow.print(); // thực hiện lệnh in trang in mới
-  //   printWindow.close(); // đóng trang in mới sau khi in xong
-  // }, 500);
+  printWindow.document.close(); // đóng trang in mới
+  setTimeout(function () {
+    printWindow.print(); // thực hiện lệnh in trang in mới
+    printWindow.close(); // đóng trang in mới sau khi in xong
+  }, 500);
 };
 window.printBill = () => {
   if (!bills || bills.length <= 0) return;
@@ -622,9 +622,9 @@ window.printBill = () => {
   printWindow.document.write("</head><body><div id='printBill'>");
   printWindow.document.write(printBill.innerHTML); // in nội dung muốn in vào trang in mới
   printWindow.document.write("</div></body></html>");
-  // printWindow.document.close(); // đóng trang in mới
-  // setTimeout(function () {
-  //   printWindow.print(); // thực hiện lệnh in trang in mới
-  //   printWindow.close(); // đóng trang in mới sau khi in xong
-  // }, 500);
+  printWindow.document.close(); // đóng trang in mới
+  setTimeout(function () {
+    printWindow.print(); // thực hiện lệnh in trang in mới
+    printWindow.close(); // đóng trang in mới sau khi in xong
+  }, 500);
 };
