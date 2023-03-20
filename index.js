@@ -102,7 +102,17 @@ window.returnToppingItem = (id) => {
   return temp;
 };
 const getProducts = async () => {
-  products = await API.getData("product");
+  // products = await API.getData("product");
+  products = await fetch(
+    "https://dvthanh277.github.io/Mer/tiemtramer-menu.json"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data.product;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   topping = await API.getData("topping");
   console.log(products);
   renderProduct(products);
@@ -616,18 +626,18 @@ window.printBill = () => {
         <p class="thank">♥ Cám ơn quý khách và hẹn gặp lại ♥</p>
       </div>
       `;
-  var printWindow = window.open("", "", "width=1280,height=720"); // mở cửa sổ in mới với kích thước 72x22mm
-  printWindow.document.write("<html><head><title>Print Page</title>"); // tạo tiêu đề cho trang in
+  var printWindow = window.open("", "", "width=1280,height=720");
+  printWindow.document.write("<html><head><title>Print Page</title>");
   printWindow.document.write(
     '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="./assets/css/print.css" />'
   ); // định dạng trang in
   printWindow.document.write("</head><body><div id='printBill'>");
-  printWindow.document.write(printBill.innerHTML); // in nội dung muốn in vào trang in mới
+  printWindow.document.write(printBill.innerHTML);
   printWindow.document.write("</div></body></html>");
-  printWindow.document.close(); // đóng trang in mới
+  printWindow.document.close();
   setTimeout(function () {
-    printWindow.print(); // thực hiện lệnh in trang in mới
-    printWindow.close(); // đóng trang in mới sau khi in xong
+    printWindow.print();
+    printWindow.close();
   }, 500);
   console.log(bills);
   bills.forEach(async function (item) {

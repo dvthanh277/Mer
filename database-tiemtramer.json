@@ -1,0 +1,564 @@
+{
+  "product": {
+    "0": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 0,
+      "image": "default.png",
+      "name": "Trà sữa truyền thống",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 20000
+        },
+        {
+          "name": "L",
+          "price": 25000
+        }
+      ],
+      "sold": 5,
+      "type": "TRASUA"
+    },
+    "1": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 1,
+      "image": "default.png",
+      "name": "Trà sữa thái xanh",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 20000
+        },
+        {
+          "name": "L",
+          "price": 25000
+        }
+      ],
+      "sold": 2,
+      "type": "TRASUA"
+    },
+    "2": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 2,
+      "image": "default.png",
+      "name": "Trà sữa gạo rang",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 20000
+        },
+        {
+          "name": "L",
+          "price": 25000
+        }
+      ],
+      "sold": 2,
+      "type": "TRASUA"
+    },
+    "3": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 3,
+      "image": "default.png",
+      "name": "Trà sữa phủ socola",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        },
+        {
+          "name": "L",
+          "price": 29000
+        }
+      ],
+      "sold": 0,
+      "type": "TRASUA"
+    },
+    "4": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 4,
+      "image": "default.png",
+      "name": "Trà sữa phủ matcha",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        },
+        {
+          "name": "L",
+          "price": 29000
+        }
+      ],
+      "sold": 0,
+      "type": "TRASUA"
+    },
+    "5": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 5,
+      "image": "default.png",
+      "name": "Trà sữa bánh plan",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        },
+        {
+          "name": "L",
+          "price": 29000
+        }
+      ],
+      "sold": 0,
+      "type": "TRASUA"
+    },
+    "6": {
+      "cost": 0,
+      "id": 6,
+      "image": "default.png",
+      "name": "Trà sữa phô mai tươi",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        },
+        {
+          "name": "L",
+          "price": 29000
+        }
+      ],
+      "sold": 0
+    },
+    "7": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 7,
+      "image": "default.png",
+      "name": "Trà sữa phô mai viên",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        },
+        {
+          "name": "L",
+          "price": 29000
+        }
+      ],
+      "sold": 0,
+      "type": "TRASUA"
+    },
+    "8": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 8,
+      "image": "default.png",
+      "name": "Trà lài tắc",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 15000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "9": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 9,
+      "image": "default.png",
+      "name": "Trà đen",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 18000
+        }
+      ],
+      "sold": 1,
+      "type": "TRA"
+    },
+    "10": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 10,
+      "image": "default.png",
+      "name": "Trà gạo rang",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 18000
+        }
+      ],
+      "sold": 1,
+      "type": "TRA"
+    },
+    "11": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 11,
+      "image": "default.png",
+      "name": "Trà táo",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 18000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "12": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 12,
+      "image": "default.png",
+      "name": "Trà vải",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 22000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "13": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 13,
+      "image": "default.png",
+      "name": "Trà lựu",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 22000
+        }
+      ],
+      "sold": 1,
+      "type": "TRA"
+    },
+    "14": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 14,
+      "image": "default.png",
+      "name": "Trà dâu",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 25000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "15": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 15,
+      "image": "default.png",
+      "name": "Trà atiso đỏ",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 22000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "16": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 16,
+      "image": "default.png",
+      "name": "Trà đào",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 22000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "17": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 17,
+      "image": "default.png",
+      "name": "Trà đào cam xả",
+      "sizes": [
+        {
+          "name": "L",
+          "price": 27000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "18": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 18,
+      "image": "default.png",
+      "name": "Trà đen milk foam",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 22000
+        }
+      ],
+      "sold": 0,
+      "type": "MILKFOAM"
+    },
+    "19": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 19,
+      "image": "default.png",
+      "name": "Trà sữa milk foam",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        }
+      ],
+      "sold": 0,
+      "type": "MILKFOAM"
+    },
+    "20": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 20,
+      "image": "default.png",
+      "name": "Thái xanh milk foam",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        }
+      ],
+      "sold": 0,
+      "type": "MILKFOAM"
+    },
+    "21": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 21,
+      "image": "default.png",
+      "name": "Trà sen vàng",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        }
+      ],
+      "sold": 0,
+      "type": "TRA"
+    },
+    "22": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 22,
+      "image": "default.png",
+      "name": "Sữa tươi đường đen",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 22000
+        }
+      ],
+      "sold": 0,
+      "type": "SUATUOI"
+    },
+    "23": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 23,
+      "image": "default.png",
+      "name": "Sữa tươi đường đen socola",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        }
+      ],
+      "sold": 0,
+      "type": "SUATUOI"
+    },
+    "24": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 24,
+      "image": "default.png",
+      "name": "Sữa tươi đường đen matcha",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 25000
+        }
+      ],
+      "sold": 0,
+      "type": "SUATUOI"
+    },
+    "25": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 25,
+      "image": "default.png",
+      "name": "Coffee đen đá",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 12000
+        }
+      ],
+      "sold": 0,
+      "type": "COFFEE"
+    },
+    "26": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 26,
+      "image": "default.png",
+      "name": "Coffee sữa",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 15000
+        }
+      ],
+      "sold": 0,
+      "type": "COFFEE"
+    },
+    "27": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 27,
+      "image": "default.png",
+      "name": "Coffee sữa tươi",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 17000
+        }
+      ],
+      "sold": 0,
+      "type": "COFFEE"
+    },
+    "28": {
+      "cost": 0,
+      "group": "NUOC",
+      "id": 28,
+      "image": "default.png",
+      "name": "Coffee macchiato",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 22000
+        }
+      ],
+      "sold": 0,
+      "type": "COFFEE"
+    },
+    "29": {
+      "cost": 0,
+      "group": "BANH",
+      "id": 29,
+      "image": "default.png",
+      "name": "Bánh Donut",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 6000
+        }
+      ],
+      "sold": 0,
+      "type": "BANH"
+    },
+    "30": {
+      "cost": 0,
+      "group": "BANH",
+      "id": 30,
+      "image": "default.png",
+      "name": "Bánh trứng muối",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 35000
+        }
+      ],
+      "sold": 0,
+      "type": "BANH"
+    },
+    "31": {
+      "cost": 0,
+      "group": "BANH",
+      "id": 31,
+      "image": "default.png",
+      "name": "Bánh su kem",
+      "sizes": [
+        {
+          "name": "M",
+          "price": 35000
+        }
+      ],
+      "sold": 0,
+      "type": "BANH"
+    },
+    "1002": {
+      "sold": 1
+    }
+  },
+  "topping": [
+    {
+      "id": "TP001",
+      "name": "Trân châu",
+      "price": 5000
+    },
+    {
+      "id": "TP002",
+      "name": "Pudding",
+      "price": 7000
+    },
+    {
+      "id": "TP003",
+      "name": "Bánh plan",
+      "price": 7000
+    },
+    {
+      "id": "TP004",
+      "name": "Thạch dừa",
+      "price": 5000
+    },
+    {
+      "id": "TP005",
+      "name": "Thạch củ năng",
+      "price": 5000
+    },
+    {
+      "id": "TP006",
+      "name": "Thạch khoai môn",
+      "price": 5000
+    },
+    {
+      "id": "TP007",
+      "name": "Phô mai tươi",
+      "price": 5000
+    },
+    {
+      "id": "TP008",
+      "name": "Phô mai viên",
+      "price": 7000
+    },
+    {
+      "id": "TP009",
+      "name": "Milk foam",
+      "price": 7000
+    }
+  ]
+}
