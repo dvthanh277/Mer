@@ -102,19 +102,8 @@ window.returnToppingItem = (id) => {
   return temp;
 };
 const getProducts = async () => {
-  // products = await API.getData("product");
-  products = await fetch(
-    "https://dvthanh277.github.io/Mer/database-tiemtramer.json"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      return data.product;
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  products = await API.getData("product");
   topping = await API.getData("topping");
-  console.log(products);
   renderProduct(products);
   renderTopping(topping);
 };
