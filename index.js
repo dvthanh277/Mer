@@ -104,7 +104,7 @@ window.returnToppingItem = (id) => {
 const getProducts = async () => {
   // products = await API.getData("product");
   products = await fetch(
-    "https://dvthanh277.github.io/Mer/tiemtramer-menu.json"
+    "https://dvthanh277.github.io/Mer/database-tiemtramer.json"
   )
     .then((response) => response.json())
     .then((data) => {
