@@ -608,16 +608,16 @@ window.printBill = () => {
   printWindow.document.write("</head><body><div id='printBill'>");
   printWindow.document.write(printBill.innerHTML);
   printWindow.document.write("</div></body></html>");
-  // printWindow.document.close();
-  // setTimeout(function () {
-  //   printWindow.print();
-  //   printWindow.close();
-  // }, 500);
-  // console.log(bills);
-  // bills.forEach(async function (item) {
-  //   let sold = item.sold + item.quantity;
-  //   const res = await API.putData("product/" + item.idProduct, {
-  //     sold: sold,
-  //   });
-  // });
+  printWindow.document.close();
+  setTimeout(function () {
+    printWindow.print();
+    printWindow.close();
+  }, 500);
+  console.log(bills);
+  bills.forEach(async function (item) {
+    let sold = item.sold + item.quantity;
+    const res = await API.putData("product/" + item.idProduct, {
+      sold: sold,
+    });
+  });
 };
