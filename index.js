@@ -18,12 +18,16 @@ window.onload = async function () {
     handleSearch(search_input.value);
   });
   document.addEventListener("keydown", function (event) {
+    event.preventDefault();
     switch (event.code) {
       case "F1":
         printPage();
         break;
       case "F2":
         printBill();
+        break;
+      case "F3":
+        newBill();
         break;
     }
   });
