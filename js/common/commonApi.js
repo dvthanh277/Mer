@@ -16,6 +16,20 @@ class CommonApi {
       return null;
     }
   };
+  postData = async (endpoint, data) => {
+    try {
+      const res = await database.ref(endpoint).set(data, (error) => {
+        if (error) {
+          // The write failed...
+        } else {
+          // Data saved successfully!
+        }
+      });
+      return res;
+    } catch (error) {
+      return null;
+    }
+  };
   putData = async (endpoint, data) => {
     try {
       const res = await database.ref(endpoint).update(data, (error) => {

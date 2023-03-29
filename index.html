@@ -1,320 +1,587 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Tiệm Trà MER</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Tiệm Trà MER</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+    <!-- Library / Plugin Css Build -->
+    <link rel="stylesheet" href="./assets/css/core/libs.min.css" />
 
-  <!-- Library / Plugin Css Build -->
-  <link rel="stylesheet" href="./assets/css/core/libs.min.css" />
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="./assets/css/aprycot.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+  </head>
 
-  <!-- Custom Css -->
-  <link rel="stylesheet" href="./assets/css/aprycot.css" />
-  <link rel="stylesheet" href="./assets/css/custom.css" />
-</head>
-
-<body style="background: #ffe7bb7d">
-  <aside class="sidebar sidebar-default sidebar-hover sidebar-mini navs-pill-all">
-    <div class="sidebar-header d-flex align-items-center justify-content-start"></div>
-    <div class="sidebar-body pt-0 data-scrollbar">
-      <div class="navbar-collapse" id="sidebar">
-        <!-- Sidebar Menu Start -->
-        <ul class="navbar-nav iq-main-menu">
-          <li class="nav-item sub-nav">
-            <a class="nav-link active" aria-current="page" href="javascript:;">
-              <i class="icon">
-                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M20.9133 16.3147L20.1444 10.1201C19.676 7.90964 18.3503 7 17.0865 7H6.93171C5.65022 7 4.28034 7.84597 3.88264 10.1201L3.1049 16.3147C2.46858 20.8629 4.81062 22 7.86853 22H16.1585C19.2075 22 21.4789 20.3535 20.9133 16.3147ZM9.097 12.1486C8.60889 12.1486 8.21321 11.7413 8.21321 11.2389C8.21321 10.7366 8.60889 10.3293 9.097 10.3293C9.5851 10.3293 9.98079 10.7366 9.98079 11.2389C9.98079 11.7413 9.5851 12.1486 9.097 12.1486ZM14.002 11.2389C14.002 11.7413 14.3977 12.1486 14.8858 12.1486C15.3739 12.1486 15.7696 11.7413 15.7696 11.2389C15.7696 10.7366 15.3739 10.3293 14.8858 10.3293C14.3977 10.3293 14.002 10.7366 14.002 11.2389Z"
-                    fill="currentColor"></path>
-                  <path opacity="0.4"
-                    d="M16.9739 6.77432C16.977 6.85189 16.9621 6.92913 16.9303 7H15.4932C15.4654 6.92794 15.4506 6.85153 15.4497 6.77432C15.4497 4.85682 13.8899 3.30238 11.9657 3.30238C10.0416 3.30238 8.48184 4.85682 8.48184 6.77432C8.49502 6.84898 8.49502 6.92535 8.48184 7H7.00989C6.9967 6.92535 6.9967 6.84898 7.00989 6.77432C7.12172 4.10591 9.32499 2 12.0049 2C14.6849 2 16.8882 4.10591 17 6.77432H16.9739Z"
-                    fill="currentColor"></path>
-                </svg>
-              </i>
-              <span class="item-name">Bán hàng</span>
-            </a>
-          </li>
-          <li>
-            <hr class="hr-horizontal" />
-          </li>
-        </ul>
-        <!-- Sidebar Menu End -->
+  <body style="background: #ffe7bb7d">
+    <aside
+      class="sidebar sidebar-default sidebar-hover sidebar-mini navs-pill-all"
+    >
+      <div
+        class="sidebar-header d-flex align-items-center justify-content-start"
+      ></div>
+      <div class="sidebar-body pt-0 data-scrollbar">
+        <div class="navbar-collapse" id="sidebar">
+          <!-- Sidebar Menu Start -->
+          <ul class="navbar-nav iq-main-menu">
+            <li class="nav-item sub-nav">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="javascript:;"
+              >
+                <i class="icon">
+                  <svg
+                    width="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M20.9133 16.3147L20.1444 10.1201C19.676 7.90964 18.3503 7 17.0865 7H6.93171C5.65022 7 4.28034 7.84597 3.88264 10.1201L3.1049 16.3147C2.46858 20.8629 4.81062 22 7.86853 22H16.1585C19.2075 22 21.4789 20.3535 20.9133 16.3147ZM9.097 12.1486C8.60889 12.1486 8.21321 11.7413 8.21321 11.2389C8.21321 10.7366 8.60889 10.3293 9.097 10.3293C9.5851 10.3293 9.98079 10.7366 9.98079 11.2389C9.98079 11.7413 9.5851 12.1486 9.097 12.1486ZM14.002 11.2389C14.002 11.7413 14.3977 12.1486 14.8858 12.1486C15.3739 12.1486 15.7696 11.7413 15.7696 11.2389C15.7696 10.7366 15.3739 10.3293 14.8858 10.3293C14.3977 10.3293 14.002 10.7366 14.002 11.2389Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M16.9739 6.77432C16.977 6.85189 16.9621 6.92913 16.9303 7H15.4932C15.4654 6.92794 15.4506 6.85153 15.4497 6.77432C15.4497 4.85682 13.8899 3.30238 11.9657 3.30238C10.0416 3.30238 8.48184 4.85682 8.48184 6.77432C8.49502 6.84898 8.49502 6.92535 8.48184 7H7.00989C6.9967 6.92535 6.9967 6.84898 7.00989 6.77432C7.12172 4.10591 9.32499 2 12.0049 2C14.6849 2 16.8882 4.10591 17 6.77432H16.9739Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </i>
+                <span class="item-name">Bán hàng</span>
+              </a>
+            </li>
+            <li>
+              <hr class="hr-horizontal" />
+            </li>
+          </ul>
+          <!-- Sidebar Menu End -->
+        </div>
       </div>
-    </div>
-    <div class="sidebar-footer"></div>
-  </aside>
-  <main class="main-content">
-    <div id="user">
-      <div class="position-relative navbar">
-        <!--Nav Start-->
-        <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
-          <div class="container-fluid navbar-inner">
-            <a href="/index.html" class="navbar-brand">
-              <!--Logo start-->
+      <div class="sidebar-footer"></div>
+    </aside>
+    <main class="main-content">
+      <div id="user">
+        <div class="position-relative navbar">
+          <!--Nav Start-->
+          <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
+            <div class="container-fluid navbar-inner">
+              <a href="/index.html" class="navbar-brand">
+                <!--Logo start-->
 
-              <!--logo End-->
-            </a>
-            <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
-              <i class="icon">
-                <svg width="20px" height="20px" viewBox="0 0 24 24">
-                  <path fill="currentColor"
-                    d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
-                </svg>
-              </i>
+                <!--logo End-->
+              </a>
+              <div
+                class="sidebar-toggle"
+                data-toggle="sidebar"
+                data-active="true"
+              >
+                <i class="icon">
+                  <svg width="20px" height="20px" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
+                    />
+                  </svg>
+                </i>
+              </div>
+              <div class="input-group search-input">
+                <span class="input-group-text" id="search-input">
+                  <svg
+                    width="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="11.7669"
+                      cy="11.7666"
+                      r="8.98856"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></circle>
+                    <path
+                      d="M18.0186 18.4851L21.5426 22"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Tìm kiếm..."
+                  id="search_input"
+                />
+              </div>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon">
+                  <span class="navbar-toggler-bar bar1 mt-2"></span>
+                  <span class="navbar-toggler-bar bar2"></span>
+                  <span class="navbar-toggler-bar bar3"></span>
+                </span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul
+                  class="navbar-nav ms-auto align-items-center navbar-list mb-2 mb-lg-0"
+                >
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link py-0 d-flex align-items-center"
+                      href="javascript:;"
+                    >
+                      <img
+                        src="./assets/images/avatars/mer.jpg"
+                        alt="User-Profile"
+                        class="img-fluid avatar avatar-50 avatar-rounded"
+                      />
+                      <div class="caption ms-3 d-md-block">
+                        <h6 class="mb-0 caption-title">Tiệm trà Mer</h6>
+                        <p
+                          class="mb-0 caption-sub-title"
+                          onclick="window.location.href='admin.html'"
+                        >
+                          Admin
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="input-group search-input">
-              <span class="input-group-text" id="search-input">
-                <svg width="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round"></circle>
-                  <path d="M18.0186 18.4851L21.5426 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-                </svg>
-              </span>
-              <input type="text" class="form-control" placeholder="Tìm kiếm..." id="search_input" />
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon">
-                <span class="navbar-toggler-bar bar1 mt-2"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto align-items-center navbar-list mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link py-0 d-flex align-items-center" href="javascript:;">
-                    <img src="./assets/images/avatars/mer.jpg" alt="User-Profile"
-                      class="img-fluid avatar avatar-50 avatar-rounded" />
-                    <div class="caption ms-3 d-md-block">
-                      <h6 class="mb-0 caption-title">Tiệm trà Mer</h6>
-                      <p class="mb-0 caption-sub-title">Admin</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <!-- Nav Header Component Start -->
-        <!-- Nav Header Component End -->
-        <!--Nav End-->
-      </div>
-      <div class="content-inner py-0 main-noidung">
-        <div class="row">
-          <div class="col-md-12 col-lg-8 p-0">
-            <div class="card-transparent bg-transparent mb-0">
-              <div class="card-body">
-                <!-- CATEGORY -->
-                <div class="swiper-container d-slider2">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide" onclick="handleClickCategory('ALL',this)">
-                      <div class="card active category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              Tất cả
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/logo.png" alt="" />
-                            </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
+          </nav>
+          <!-- Nav Header Component Start -->
+          <!-- Nav Header Component End -->
+          <!--Nav End-->
+        </div>
+        <div class="content-inner py-0 main-noidung">
+          <div class="row">
+            <div class="col-md-12 col-lg-8 p-0">
+              <div class="card-transparent bg-transparent mb-0">
+                <div class="card-body">
+                  <!-- CATEGORY -->
+                  <div class="swiper-container d-slider2">
+                    <div class="swiper-wrapper">
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('ALL',this)"
+                      >
+                        <div class="card active category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                Tất cả
+                              </h6>
+                              <div class="category-image">
+                                <img src="./assets/images/logo.png" alt="" />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="swiper-slide" onclick="handleClickCategory('TRASUA',this)">
-                      <div class="card category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              Trà sữa
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/bubble-tea.png" alt="" />
-                            </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide" onclick="handleClickCategory('TRA',this)">
-                      <div class="card category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              Trà
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/milk-tea.png" alt="" />
-                            </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide" onclick="handleClickCategory('MILKFOAM',this)">
-                      <div class="card category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              MILKFOAM
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/milkfoam.png" alt="" />
-                            </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('TRASUA',this)"
+                      >
+                        <div class="card category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                Trà sữa
+                              </h6>
+                              <div class="category-image">
+                                <img
+                                  src="./assets/images/bubble-tea.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="swiper-slide" onclick="handleClickCategory('SUATUOI',this)">
-                      <div class="card category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              Sữa tươi
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/milk.png" alt="" />
-                            </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('TRA',this)"
+                      >
+                        <div class="card category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                Trà
+                              </h6>
+                              <div class="category-image">
+                                <img
+                                  src="./assets/images/milk-tea.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="swiper-slide" onclick="handleClickCategory('COFFEE',this)">
-                      <div class="card category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              COFFEE
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/coffee-cup.png" alt="" />
-                            </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('MILKFOAM',this)"
+                      >
+                        <div class="card category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                MILKFOAM
+                              </h6>
+                              <div class="category-image">
+                                <img
+                                  src="./assets/images/milkfoam.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="swiper-slide" onclick="handleClickCategory('BANH',this)">
-                      <div class="card category-menu">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <h6 class="heading-title fw-bolder category-title">
-                              Bánh
-                            </h6>
-                            <div class="category-image">
-                              <img src="./assets/images/cupcake.png" alt="" />
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('SUATUOI',this)"
+                      >
+                        <div class="card category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                Sữa tươi
+                              </h6>
+                              <div class="category-image">
+                                <img src="./assets/images/milk.png" alt="" />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
                             </div>
-                            <div class="category-icon" style="transform: rotate(90deg)">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" rx="12" fill="#fff" />
-                                <path d="M10.25 8.5L13.75 12L10.25 15.5" stroke="#EA6A12" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                              </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('COFFEE',this)"
+                      >
+                        <div class="card category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                COFFEE
+                              </h6>
+                              <div class="category-image">
+                                <img
+                                  src="./assets/images/coffee-cup.png"
+                                  alt=""
+                                />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="swiper-slide"
+                        onclick="handleClickCategory('BANH',this)"
+                      >
+                        <div class="card category-menu">
+                          <div class="card-body">
+                            <div class="text-center">
+                              <h6
+                                class="heading-title fw-bolder category-title"
+                              >
+                                Bánh
+                              </h6>
+                              <div class="category-image">
+                                <img src="./assets/images/cupcake.png" alt="" />
+                              </div>
+                              <div
+                                class="category-icon"
+                                style="transform: rotate(90deg)"
+                              >
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    rx="12"
+                                    fill="#fff"
+                                  />
+                                  <path
+                                    d="M10.25 8.5L13.75 12L10.25 15.5"
+                                    stroke="#EA6A12"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <!-- MENU -->
-                <div class="col-xl-12 col-lg-12 dish-card-horizontal mt-2" style="
+                  <!-- MENU -->
+                  <div
+                    class="col-xl-12 col-lg-12 dish-card-horizontal mt-2"
+                    style="
                       max-height: 62.5vh;
                       height: 62.5vh;
                       overflow-y: auto;
                       overflow-x: hidden;
-                    ">
-                  <div class="row" id="menu_items" style="padding-bottom: 50px"></div>
+                    "
+                  >
+                    <div
+                      class="row"
+                      id="menu_items"
+                      style="padding-bottom: 50px"
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-12 col-lg-4 mt-5">
-            <div class="row">
-              <div class="col-md-12 col-lg-12">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="d-flex align-items-center">
-                      <h4 class="list-main">HÓA ĐƠN</h4>
-                      <button class="btn btn-danger btn-xs rounded-pill ms-4" onclick="newBill()" id="newBill">
-                        Đơn mới (F3)
-                      </button>
-                    </div>
+            <div class="col-md-12 col-lg-4 mt-5">
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="d-flex align-items-center">
+                        <h4 class="list-main">HÓA ĐƠN</h4>
+                        <button
+                          class="btn btn-primary btn-xs rounded-pill ms-4"
+                          onclick="newBill()"
+                          id="newBill"
+                        >
+                          Tạo đơn mới (F4)
+                        </button>
+                      </div>
 
-                    <div class="total" style="
+                      <div
+                        class="total"
+                        style="
                           display: flex;
                           justify-content: end;
                           align-items: center;
-                        ">
-                      <p id="total_quantity"></p>
-                      <p id="total_money"></p>
+                        "
+                      >
+                        <p id="total_quantity"></p>
+                        <p id="total_money"></p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="card-body">
-                    <div id="bill_items"></div>
+                    <div class="card-body">
+                      <div id="bill_items"></div>
 
-                    <div class="text-center mt-5">
-                      <button class="btn btn-warning rounded-pill me-4" onclick="printPage()">
-                        In tem (F1)
-                      </button>
-                      <button class="btn btn-success rounded-pill" onclick="printBill()">
-                        Tính tiền (F2)
-                      </button>
+                      <div class="text-center mt-5">
+                        <button
+                          class="btn btn-warning rounded-pill me-3"
+                          onclick="printPage()"
+                        >
+                          In tem (F1)
+                        </button>
+                        <button
+                          class="btn btn-success rounded-pill me-3"
+                          onclick="printBill()"
+                        >
+                          Tính tiền (F2)
+                        </button>
+                        <button
+                          class="btn btn-danger rounded-pill"
+                          onclick="createInvoice()"
+                        >
+                          Chốt đơn (F3)
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -323,62 +590,80 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Footer Section Start -->
-    <footer class="footer">
-      <div class="footer-body">
-        <div class="right-panel">
-          © Tiệm trà MER
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          , Theme <a href="https://iqonic.design/">Aprycot®</a>.
-        </div>
-      </div>
-    </footer>
-    <!-- Footer Section End -->
-  </main>
-
-  <div class="modal fade" id="toppingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Thêm Topping</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" style="background: rgba(255, 231, 187, 0.49)">
-          <div class="row">
-            <div id="topping_items" class="row col-9"></div>
-            <div id="topping_add" class="col-3"></div>
+      <!-- Footer Section Start -->
+      <footer class="footer">
+        <div class="footer-body">
+          <div class="right-panel">
+            © Tiệm trà MER
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            , Theme <a href="https://iqonic.design/">Aprycot®</a>.
           </div>
         </div>
+      </footer>
+      <!-- Footer Section End -->
+    </main>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="closeAddTopping()">
-            Đóng
-          </button>
-          <button type="button" class="btn btn-primary" onclick="handleAddItemTopping()">
-            Thêm
-          </button>
+    <div
+      class="modal fade"
+      id="toppingModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thêm Topping</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" style="background: rgba(255, 231, 187, 0.49)">
+            <div class="row">
+              <div id="topping_items" class="row col-9"></div>
+              <div id="topping_add" class="col-3"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeAddTopping()"
+            >
+              Đóng
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="handleAddItemTopping()"
+            >
+              Thêm
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="printContent"></div>
-  <div id="printBill"></div>
-  <!-- Wrapper End-->
-  <!-- Required Library Bundle Script -->
-  <script src="./assets/js/core/libs.min.js"></script>
-  <!-- External Library Bundle Script -->
-  <script src="./assets/js/core/external.min.js"></script>
-  <!-- Mapchart JavaScript -->
-  <script src="./assets/js/charts/dashboard.js"></script>
-  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <div id="printContent"></div>
+    <div id="printBill"></div>
+    <!-- Wrapper End-->
+    <!-- Required Library Bundle Script -->
+    <script src="./assets/js/core/libs.min.js"></script>
+    <!-- External Library Bundle Script -->
+    <script src="./assets/js/core/external.min.js"></script>
+    <!-- Mapchart JavaScript -->
+    <script src="./assets/js/charts/dashboard.js"></script>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
-  <script src="./main.js"></script>
-  <script type="module" src="./index.js"></script>
-</body>
-
+    <script src="./main.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>

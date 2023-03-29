@@ -8,25 +8,35 @@ const search_input = document.querySelector("#search_input");
 const total_quantity_element = document.querySelector("#total_quantity");
 const total_money_element = document.querySelector("#total_money");
 var products;
+var invoices;
 var topping;
 var bills = [];
 var topping_adds = [];
+
 window.onload = async function () {
-  getProducts();
+  await getProducts();
+  await getInvoices();
+  console.log(invoices);
   search_input.focus();
   search_input.addEventListener("input", function (e) {
     handleSearch(search_input.value);
   });
   document.addEventListener("keydown", function (event) {
-    event.preventDefault();
     switch (event.code) {
       case "F1":
+        event.preventDefault();
         printPage();
         break;
       case "F2":
+        event.preventDefault();
         printBill();
         break;
       case "F3":
+        event.preventDefault();
+        createInvoice();
+        break;
+      case "F4":
+        event.preventDefault();
         newBill();
         break;
     }
@@ -111,6 +121,9 @@ const getProducts = async () => {
   renderProduct(products);
   renderTopping(topping);
 };
+const getInvoices = async () => {
+  invoices = (await API.getData("invoice")) || [];
+};
 const renderProduct = (data) => {
   if (data) {
     menu_items.innerHTML = data
@@ -130,29 +143,32 @@ const renderProduct = (data) => {
             <h6 class="heading-title fw-bolder mt-4 mb-0">
               ${element.name}
             </h6>
-            <p class="mt-1 mb-0 pb-4   iq-calories small">Đã bán: ${element.sold
-          }</p>
+            <p class="mt-1 mb-0 pb-4   iq-calories small">Đã bán: ${
+              element.sold
+            }</p>
             <div class="d-flex mt-1 flex-wrap">
               ${element.sizes
-            .map((size) => {
-              return `<div class="d-flex align-items-center justify-content-between col-12 mb-2">
+                .map((size) => {
+                  return `<div class="d-flex align-items-center justify-content-between col-12 mb-2">
                 <span class="text-primary fw-bolder me-2">${formatNumber(
-                size.price
-              )}</span>
+                  size.price
+                )}</span>
                 <div class="d-flex align-items-center justify-content-between">
             
-              <button class="btn btn-success btn-sm rounded-pill fw-bolder" onclick="handleAddItem('${element.id
-                }','${size.name}')" style="min-width:47px">
+              <button class="btn btn-success btn-sm rounded-pill fw-bolder" onclick="handleAddItem('${
+                element.id
+              }','${size.name}')" style="min-width:47px">
             ${size.name}</button>
-              ${element.group == "NUOC"
+              ${
+                element.group == "NUOC"
                   ? `    <button class="btn btn-warning btn-xs rounded-pill ms-3" onclick="openToppingModal('${element.id}','${size.name}')">
               Topping</button>`
                   : ``
-                }
+              }
               </div>
               </div>`;
-            })
-            .join("")}
+                })
+                .join("")}
             </div>
           </div>
         </div>
@@ -166,8 +182,9 @@ const renderTopping = (data) => {
   if (data) {
     topping_items.innerHTML = data
       .map((element) => {
-        return `<div class="col-4 mb-3" onclick="handleAddTopping('${element.id
-          }')" >
+        return `<div class="col-4 mb-3" onclick="handleAddTopping('${
+          element.id
+        }')" >
         <div
           class="card card-white dish-card profile-img mb-0 index"
         >
@@ -178,8 +195,8 @@ const renderTopping = (data) => {
             <div class="d-flex mt-1 flex-wrap">
             <div class="d-flex align-items-center justify-content-between col-12 mb-2">
             <span class="text-primary fw-bolder me-2">${formatNumber(
-            element.price
-          )} đ</span>
+              element.price
+            )} đ</span>
             </div>
             </div>
 
@@ -235,16 +252,20 @@ const renderBill = (data) => {
         <div class="d-flex align-items-center profile-content">
           <div>
             <h6 class="mb-1 heading-title fw-bolder">
-              ${element.name}  ${element.group == "NUOC" ? `(${element.size})` : ``
-          }
+              ${element.name}  ${
+          element.group == "NUOC" ? `(${element.size})` : ``
+        }
             </h6>
             <span class="d-flex align-items-center">
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${element.invoiceId
-          }')"> - </button>
-              <small class="text-dark fw-bold ms-3 me-3">x ${element.quantity
-          }</small>
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncrease('${element.invoiceId
-          }')"> + </button>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${
+                element.invoiceId
+              }')"> - </button>
+              <small class="text-dark fw-bold ms-3 me-3">x ${
+                element.quantity
+              }</small>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncrease('${
+                element.invoiceId
+              }')"> + </button>
          
             </span>
           </div>
@@ -269,17 +290,18 @@ const renderBill = (data) => {
               />
             </svg>
           </span>
-          <p class="mb-0 text-dark">${element.topping.length > 0
-            ? `<span class="old-price">${formatNumber(
-              element.price
-            )}đ</span>${formatNumber(element.total)}đ`
-            : `${formatNumber(element.total)}đ`
+          <p class="mb-0 text-dark">${
+            element.topping.length > 0
+              ? `<span class="old-price">${formatNumber(
+                  element.price
+                )}đ</span>${formatNumber(element.total)}đ`
+              : `${formatNumber(element.total)}đ`
           }</p>
         </div>
       </div>
       ${element.topping
-            .map((topping) => {
-              return `
+        .map((topping) => {
+          return `
         <div class="d-flex align-items-center justify-content-between profile-img4">
         <div class="d-flex align-items-center profile-content" style="margin-left: 125px">
           <div>
@@ -287,12 +309,15 @@ const renderBill = (data) => {
               ${topping.name}
             </h6>
             <span class="d-flex align-items-center">
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecreaseTopping('${topping.id
-                }')"> - </button>
-              <small class="text-dark fw-bold ms-3 me-3">x ${topping.quantity
-                }</small>
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncreaseTopping('${topping.id
-                }')"> + </button>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecreaseTopping('${
+                topping.id
+              }')"> - </button>
+              <small class="text-dark fw-bold ms-3 me-3">x ${
+                topping.quantity
+              }</small>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncreaseTopping('${
+                topping.id
+              }')"> + </button>
             </span>
           </div>
         </div>
@@ -306,8 +331,8 @@ const renderBill = (data) => {
           <p class="mb-0 text-dark">${formatNumber(topping.total)}đ</p>
         </div>
       </div>`;
-            })
-            .join("")}
+        })
+        .join("")}
     </div>`;
       })
       .join("");
@@ -383,7 +408,7 @@ window.handleSearch = (search_value) => {
     (element) =>
       element.name.toLowerCase().includes(search_value.toLowerCase()) == true ||
       toSlug(element.name.toLowerCase()).includes(search_value.toLowerCase()) ==
-      true
+        true
   );
   renderProduct(bill_search);
 };
@@ -480,19 +505,20 @@ window.printPage = () => {
     <p class="print-title">${element.name} (${element.size})</p>
     <p class="print-topping">
       ${element.topping
-          .map((topping) => {
-            return `<span>${topping.name} x${topping.quantity} - ${formatNumber(
-              topping.total
-            )}</span>`;
-          })
-          .join("")}
+        .map((topping) => {
+          return `<span>${topping.name} x${topping.quantity} - ${formatNumber(
+            topping.total
+          )}</span>`;
+        })
+        .join("")}
     </p>
-    <p class="print-price">${element.topping.length > 0
-          ? `<span class="old-price">${formatNumber(
+    <p class="print-price">${
+      element.topping.length > 0
+        ? `<span class="old-price">${formatNumber(
             element.price
           )}đ</span>${formatNumber(element.total)}đ`
-          : `${formatNumber(element.price)}đ`
-        }</p>
+        : `${formatNumber(element.price)}đ`
+    }</p>
     
   </div>`;
     })
@@ -552,46 +578,47 @@ window.printBill = () => {
           <table>
             <tbody>
             ${bills
-      .map((element) => {
-        console.log(element);
-        total += element.total;
-        if (element.topping.length > 0) {
-          return `<tr>
-                  <td><span class="name">${element.name} (${element.size
-            })</span>
+              .map((element) => {
+                total += element.total;
+                if (element.topping.length > 0) {
+                  return `<tr>
+                  <td><span class="name">${element.name} (${
+                    element.size
+                  })</span>
                     ${element.topping
-              .map((topping) => {
-                return `<span class="topping">${topping.name}</span>`;
-              })
-              .join("")}
+                      .map((topping) => {
+                        return `<span class="topping">${topping.name}</span>`;
+                      })
+                      .join("")}
                   </td>
                   <td><span class="quantity">x${element.quantity}</span>
                   ${element.topping
-              .map((topping) => {
-                return `<span class="quantity">x${topping.quantity}</span>`;
-              })
-              .join("")}
+                    .map((topping) => {
+                      return `<span class="quantity">x${topping.quantity}</span>`;
+                    })
+                    .join("")}
                    </td>
                   <td><span class="total">${formatNumber(element.price)}</span>
                   ${element.topping
-              .map((topping) => {
-                return `<span class="total">${formatNumber(
-                  topping.total
-                )}</span>`;
-              })
-              .join("")}
+                    .map((topping) => {
+                      return `<span class="total">${formatNumber(
+                        topping.total
+                      )}</span>`;
+                    })
+                    .join("")}
                   </td>
                 </tr>`;
-        } else {
-          return `<tr>
-                  <td>${element.name} ${element.group == "NUOC" ? `(${element.size})` : ``
-            }</td>
+                } else {
+                  return `<tr>
+                  <td>${element.name} ${
+                    element.group == "NUOC" ? `(${element.size})` : ``
+                  }</td>
                   <td>x${element.quantity}</td>
                   <td>${formatNumber(element.total)}</td>
                 </tr>`;
-        }
-      })
-      .join("")}
+                }
+              })
+              .join("")}
             </tbody>
             <tfoot>
               <tr>
@@ -617,11 +644,27 @@ window.printBill = () => {
     printWindow.print();
     printWindow.close();
   }, 500);
-  console.log(bills);
+};
+
+window.createInvoice = async () => {
+  let total = 0;
+  let quantity = 0;
   bills.forEach(async function (item) {
+    total += item.total;
+    quantity += item.quantity;
     let sold = item.sold + item.quantity;
     const res = await API.putData("product/" + item.idProduct, {
       sold: sold,
     });
   });
+  let temp = {
+    id: "INV" + invoices.length,
+    total: total,
+    date: Date.now(),
+    details: bills,
+    sold: quantity,
+  };
+  invoices.push(temp);
+  const rest = await API.postData("invoice/", invoices);
+  newBill();
 };

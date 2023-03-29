@@ -116,3 +116,7 @@
 .avatar-100 {
     border: 3px solid #d6703f;
 }
+
+#admin {
+    min-height: 91.8vh;
+}
