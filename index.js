@@ -649,6 +649,7 @@ window.printBill = () => {
 };
 
 window.createInvoice = async () => {
+  if (!bills || bills.length <= 0) return;
   let total = 0;
   let quantity = 0;
   bills.forEach(async function (item) {
