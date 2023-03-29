@@ -133,11 +133,13 @@ const renderProduct = (data) => {
           class="card card-white dish-card profile-img mb-0 index"
         >
           <div class="profile-img21">
-            <img
-              src="./assets/images/menu/${element.image}"
-              class="img-fluid rounded-pill avatar-100"
-              alt="profile-image"
-            />
+            <div class="img-fluid rounded-pill avatar-100" style="margin: 0 auto;overflow: hidden;position: relative;">
+        
+          <img src="./assets/images/menu/${
+            element.image
+          }" style="width: 168%;position: absolute;top: 35%;left: 50%;transform: translate(-50%,-50%);" alt="profile-image">
+          </div>
+            
           </div>
           <div class="card-body menu-image">
             <h6 class="heading-title fw-bolder mt-4 mb-0">
