@@ -120,3 +120,34 @@
 #admin {
     min-height: 91.8vh;
 }
+
+.have_topping {
+    background-color: rgb(103 54 30) !important;
+}
+
+.have_topping .text-primary {
+    color: #fff !important
+}
+
+.have_topping .heading-title {
+    color: #fff !important
+}
+
+.number_topping {
+    position: absolute;
+    right: -4px;
+    top: 0;
+    background: red;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    color: #fff;
+    line-height: 26px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: none;
+}
+
+.have_topping .number_topping {
+    display: block;
+}

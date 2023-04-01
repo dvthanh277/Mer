@@ -101,8 +101,7 @@ window.handleAddItemTopping = () => {
     sold: product[0].sold,
   };
   bills.push(item);
-  $("#toppingModal").modal("hide");
-  topping_adds = [];
+  closeAddTopping();
   renderBill(bills);
 };
 window.returnItemInfo = (id) => {
@@ -184,11 +183,10 @@ const renderTopping = (data) => {
   if (data) {
     topping_items.innerHTML = data
       .map((element) => {
-        return `<div class="col-4 mb-3" onclick="handleAddTopping('${
-          element.id
-        }')" >
+        return `<div class="col-4 mb-3" >
         <div
           class="card card-white dish-card profile-img mb-0 index"
+          onclick="handleAddTopping('${element.id}',this)"
         >
           <div class="p-3">
             <h6 class="heading-title fw-bolder mt-2 mb-0">
@@ -201,8 +199,8 @@ const renderTopping = (data) => {
             )} đ</span>
             </div>
             </div>
-
           </div>
+          <div class="number_topping"></div>
         </div>
       </div>`;
       })
@@ -210,12 +208,14 @@ const renderTopping = (data) => {
   }
 };
 
-window.handleAddTopping = (id_topping) => {
+window.handleAddTopping = (id_topping, event) => {
   const index = topping_adds.findIndex((element) => element.id === id_topping);
+  const number = event.querySelector(".number_topping");
   if (index !== -1) {
     topping_adds[index].quantity += 1;
     topping_adds[index].total =
       topping_adds[index].quantity * topping_adds[index].price;
+    number.innerHTML = topping_adds[index].quantity;
   } else {
     const topping = returnToppingItem(id_topping);
     let item = {
@@ -225,9 +225,10 @@ window.handleAddTopping = (id_topping) => {
       quantity: 1,
       total: topping[0].price,
     };
+    number.innerHTML = 1;
     topping_adds.push(item);
   }
-  console.log(topping_adds);
+  event.classList.add("have_topping");
   renderToppingBill(topping_adds);
 };
 var total_money = 0;
@@ -367,13 +368,21 @@ const renderToppingBill = (data) => {
 };
 window.closeAddTopping = () => {
   topping_adds = [];
+  document.querySelectorAll(".have_topping").forEach((item) => {
+    item.classList.remove("have_topping");
+  });
   renderToppingBill(topping_adds);
   $("#toppingModal").modal("hide");
 };
 window.handleIncrease = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
-  console.log(index);
   if (index !== -1) {
+    if (bills[index].topping.length > 0) {
+      bills[index].topping.forEach(function (item) {
+        item.quantity += 1;
+        item.total = item.quantity * item.price;
+      });
+    }
     bills[index].quantity += 1;
     bills[index].total = bills[index].quantity * bills[index].price;
   }
@@ -383,8 +392,13 @@ window.handleDecrease = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
   console.log(index);
   if (index !== -1) {
+    if (bills[index].topping.length > 0) {
+      bills[index].topping.forEach(function (item) {
+        item.quantity -= 1;
+        item.total = item.quantity * item.price;
+      });
+    }
     bills[index].quantity -= 1;
-
     bills[index].total = bills[index].quantity * bills[index].price;
   }
   if (bills[index].quantity == 0) {
