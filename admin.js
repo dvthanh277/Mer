@@ -6,63 +6,74 @@ const sodon = document.querySelector("#sodon");
 const doanhthu = document.querySelector("#doanhthu");
 const today_date = document.querySelector("#today_date");
 const invoice_content = document.querySelector("#invoice_content");
+const select_date = document.querySelector("#select_date");
 window.onload = async function () {
   //Hôm nay
-  const dateNow = new Date();
-  today_date.innerHTML = convertVnDate(dateNow);
+  changeTextDate(new Date());
   invoices = await getInvoices();
-  renderInvoice(invoices);
   filterDataByDate(0);
 };
 
 const getInvoices = async () => {
   return (await API.getData("invoice")) || [];
 };
+const changeTextDate = (date) => {
+  today_date.innerHTML = convertVnDate(date);
+};
+window.handleChangeDate = (event) => {
+  let selectedDate = new Date(event.value);
+  let today = new Date();
+  changeTextDate(selectedDate);
+  if (convertDate(selectedDate) == convertDate(today)) {
+    filterDataByDate(0);
+    return;
+  }
+  if (selectedDate.getTime() < today.getTime()) {
+    var timeDiff = Math.abs(selectedDate.getTime() - today.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    filterDataByDate(diffDays);
+  } else {
+    console.log("lon hon");
+    filterDataByDate(-1);
+  }
+};
 
 window.filterDataByDate = (date) => {
+  if (date < 0) {
+    soly.innerHTML = 0;
+    sodon.innerHTML = 0;
+    doanhthu.innerHTML = "0 đ";
+    renderInvoice([]);
+    return;
+  }
   let date_now = new Date();
   let date_filter = date_now.setDate(date_now.getDate() - date);
   let filter_invoices = invoices.filter(
     (item) => convertDate(item.date) === convertDate(date_filter)
   );
-  if (filter_invoices.length > 0) {
-    let ly = 0;
-    let don = filter_invoices.length;
-    let tien = 0;
-    filter_invoices.forEach(function (item) {
-      ly += item.sold;
-      tien += item.total;
-    });
-    switch (date) {
-      case 0:
-        soly.innerHTML = ly;
-        sodon.innerHTML = don;
-        doanhthu.innerHTML = formatNumber(tien) + " đ";
-        break;
-      case 1:
-        break;
-      case 7:
-        break;
-      case 30:
-        break;
-      default:
-        break;
-    }
-  } else {
-    soly.innerHTML = 0;
-    sodon.innerHTML = 0;
-    doanhthu.innerHTML = "0 đ";
-  }
+  let ly = 0;
+  let don = filter_invoices.length || 0;
+  let tien = 0;
+  filter_invoices.forEach(function (item) {
+    ly += item.sold;
+    tien += item.total;
+  });
+  soly.innerHTML = ly;
+  sodon.innerHTML = don;
+  doanhthu.innerHTML = formatNumber(tien) + " đ";
+  renderInvoice(filter_invoices);
 };
 const renderInvoice = (data) => {
-  if (data?.length <= 0) return;
+  if (data?.length <= 0) {
+    invoice_content.innerHTML = ``;
+    return;
+  }
 
   invoice_content.innerHTML = data
     .sort(function (a, b) {
       return new Date(b.date) - new Date(a.date);
     })
     .map((invoice) => {
-      console.log(invoice);
       return ` <div class="col">
     <div class="card order-history-card">
       <div class="card-body">
@@ -102,7 +113,6 @@ const renderInvoice = (data) => {
               detail.topping
                 ? detail?.topping
                     ?.map((topping) => {
-                      console.log(topping);
                       return `<p class="mb-0 d-flex justify-content-between"><span>${
                         topping.name
                       }</span> <span>x${topping.quantity}  -  ${formatNumber(

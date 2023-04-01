@@ -232,7 +232,7 @@ window.handleAddTopping = (id_topping, event) => {
     topping_adds.push(item);
   }
   event.classList.add("have_topping");
-  renderToppingBill(topping_adds);
+  // renderToppingBill(topping_adds);
 };
 var total_money = 0;
 var total_quantity = 0;
@@ -347,7 +347,7 @@ window.newBill = () => {
   topping_adds = [];
   bills = [];
   renderBill(bills);
-  renderToppingBill(topping_adds);
+  // renderToppingBill(topping_adds);
 };
 const renderToppingBill = (data) => {
   if (data) {
@@ -365,7 +365,7 @@ window.closeAddTopping = () => {
   document.querySelectorAll(".have_topping").forEach((item) => {
     item.classList.remove("have_topping");
   });
-  renderToppingBill(topping_adds);
+  // renderToppingBill(topping_adds);
   $("#toppingModal").modal("hide");
 };
 window.handleIncrease = (invoice_id) => {

@@ -101,14 +101,21 @@
         <div class="content-inner mt-5 py-0">
           <div class="row">
             <div class="card">
-              <div
-                class="card-header d-flex justify-content-between border-bottom-0"
-              >
-                <div class="header-title">
-                  <h4 class="card-title">
-                    Hôm nay -
-                    <span id="today_date" class="text-primary"></span>
-                  </h4>
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-6 d-flex align-items-center">
+                    <div class="header-title w-100">
+                      <h4 class="card-title">
+                        <span id="today_date" class="text-primary"></span>
+                      </h4>
+                    </div>
+                    <input
+                      type="date"
+                      class="form-control ms-3"
+                      id="select_date"
+                      onchange="handleChangeDate(this)"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="card-body">
