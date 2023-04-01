@@ -186,7 +186,7 @@ const renderTopping = (data) => {
   if (data) {
     topping_items.innerHTML = data
       .map((element) => {
-        return `<div class="col-4 mb-3" >
+        return `<div class="col-4 mb-3 position-relative">
         <div
           class="card card-white dish-card profile-img mb-0 index"
           onclick="handleAddTopping('${element.id}',this)"
@@ -203,8 +203,16 @@ const renderTopping = (data) => {
             </div>
             </div>
           </div>
+      
           <div class="number_topping"></div>
         </div>
+        <button class="btn btn-warning btn-sm rounded-pill fw-bolder" style="
+        position: absolute;
+        right: 22px;
+        bottom: 10px;
+        cursor: pointer;
+    "
+    onclick="handleDecreaseTopping('${element.id}',this)"> - </button>
       </div>`;
       })
       .join("");
@@ -233,6 +241,40 @@ window.handleAddTopping = (id_topping, event) => {
   }
   event.classList.add("have_topping");
   // renderToppingBill(topping_adds);
+};
+window.handleDecreaseTopping = (id_topping, event) => {
+  const index = topping_adds.findIndex((element) => element.id === id_topping);
+  const number = event.parentElement.querySelector(".number_topping");
+  if (index !== -1) {
+    topping_adds[index].quantity -= 1;
+    topping_adds[index].total =
+      topping_adds[index].quantity * topping_adds[index].price;
+    number.innerHTML = topping_adds[index].quantity;
+
+    if (topping_adds[index].quantity == 0) {
+      topping_adds.splice(index, 1);
+      event.parentElement
+        .querySelector(".have_topping")
+        .classList.remove("have_topping");
+    }
+  }
+
+  // event.classList.add("have_topping");
+  // renderToppingBill(topping_adds);
+};
+window.handleDeleteTopping = (invoice_id, id_topping) => {
+  const index = bills.findIndex((element) => element.invoiceId === invoice_id);
+  if (index !== -1) {
+    let index_topping = bills[index].topping.findIndex(
+      (topping) => topping.id === id_topping
+    );
+    if (index_topping !== -1) {
+      bills[index].total =
+        bills[index].total - bills[index].topping[index_topping].total;
+      bills[index].topping.splice(index_topping, 1);
+    }
+  }
+  renderBill(bills);
 };
 var total_money = 0;
 var total_quantity = 0;
@@ -319,7 +361,9 @@ const renderBill = (data) => {
           </div>
         </div>
         <div class="me-4 text-end">
-          <span class="mb-1" onclick="handleDeleteTopping('${topping.id}')">
+          <span class="mb-1" onclick="handleDeleteTopping('${
+            element.invoiceId
+          }','${topping.id}')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path opacity="0.4" d="M19.6449 9.48924C19.6449 9.55724 19.112 16.298 18.8076 19.1349C18.6169 20.8758 17.4946 21.9318 15.8111 21.9618C14.5176 21.9908 13.2514 22.0008 12.0055 22.0008C10.6829 22.0008 9.38936 21.9908 8.1338 21.9618C6.50672 21.9228 5.38342 20.8458 5.20253 19.1349C4.88936 16.288 4.36613 9.55724 4.35641 9.48924C4.34668 9.28425 4.41281 9.08925 4.54703 8.93126C4.67929 8.78526 4.86991 8.69727 5.07026 8.69727H18.9408C19.1402 8.69727 19.3211 8.78526 19.464 8.93126C19.5973 9.08925 19.6644 9.28425 19.6449 9.48924" fill="#E60A0A"></path>
               <path d="M21 5.97686C21 5.56588 20.6761 5.24389 20.2871 5.24389H17.3714C16.7781 5.24389 16.2627 4.8219 16.1304 4.22692L15.967 3.49795C15.7385 2.61698 14.9498 2 14.0647 2H9.93624C9.0415 2 8.26054 2.61698 8.02323 3.54595L7.87054 4.22792C7.7373 4.8219 7.22185 5.24389 6.62957 5.24389H3.71385C3.32386 5.24389 3 5.56588 3 5.97686V6.35685C3 6.75783 3.32386 7.08982 3.71385 7.08982H20.2871C20.6761 7.08982 21 6.75783 21 6.35685V5.97686Z" fill="#E60A0A"></path>
