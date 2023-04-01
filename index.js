@@ -89,7 +89,11 @@ window.handleAddItemTopping = () => {
     name: product[0].name,
     image: product[0].image,
     invoiceId:
-      product[0].id + sizeTemp + "TP" + Math.floor(Math.random() * 1000),
+      product[0].id +
+      sizeTemp +
+      "TP" +
+      Math.floor(Math.random() * 10000) +
+      Math.floor(Math.random() * 10000),
     size: sizeTemp,
     price: price,
     quantity: 1,
@@ -178,7 +182,6 @@ const renderProduct = (data) => {
       .join("");
   }
 };
-
 const renderTopping = (data) => {
   if (data) {
     topping_items.innerHTML = data
@@ -305,23 +308,14 @@ const renderBill = (data) => {
       ${element.topping
         .map((topping) => {
           return `
-        <div class="d-flex align-items-center justify-content-between profile-img4">
+        <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center profile-content" style="margin-left: 125px">
           <div>
             <h6 class="mb-1 heading-title">
-              ${topping.name}
+              ${topping.name}   <small class="text-dark fw-bold ms-3 me-3">x ${
+            topping.quantity
+          }</small>
             </h6>
-            <span class="d-flex align-items-center">
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecreaseTopping('${
-                topping.id
-              }')"> - </button>
-              <small class="text-dark fw-bold ms-3 me-3">x ${
-                topping.quantity
-              }</small>
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncreaseTopping('${
-                topping.id
-              }')"> + </button>
-            </span>
           </div>
         </div>
         <div class="me-4 text-end">
@@ -378,13 +372,20 @@ window.handleIncrease = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
   if (index !== -1) {
     if (bills[index].topping.length > 0) {
-      bills[index].topping.forEach(function (item) {
-        item.quantity += 1;
-        item.total = item.quantity * item.price;
-      });
+      let item = {
+        ...bills[index],
+      };
+      item.invoiceId =
+        item.idProduct +
+        item.size +
+        "TP" +
+        Math.floor(Math.random() * 10000) +
+        Math.floor(Math.random() * 10000);
+      bills.push(item);
+    } else {
+      bills[index].quantity += 1;
+      bills[index].total = bills[index].quantity * bills[index].price;
     }
-    bills[index].quantity += 1;
-    bills[index].total = bills[index].quantity * bills[index].price;
   }
   renderBill(bills);
 };
@@ -392,12 +393,6 @@ window.handleDecrease = (invoice_id) => {
   const index = bills.findIndex((element) => element.invoiceId === invoice_id);
   console.log(index);
   if (index !== -1) {
-    if (bills[index].topping.length > 0) {
-      bills[index].topping.forEach(function (item) {
-        item.quantity -= 1;
-        item.total = item.quantity * item.price;
-      });
-    }
     bills[index].quantity -= 1;
     bills[index].total = bills[index].quantity * bills[index].price;
   }
@@ -456,6 +451,7 @@ function toSlug(str) {
   // return
   return str;
 }
+
 const slides = document.querySelectorAll(".swiper-slide .card");
 window.handleClickCategory = (category, event) => {
   slides.forEach(function (item) {
@@ -470,6 +466,31 @@ window.handleClickCategory = (category, event) => {
   renderProduct(temp);
   console.log(temp);
 };
+
+window.createInvoice = async () => {
+  if (!bills || bills.length <= 0) return;
+  let total = 0;
+  let quantity = 0;
+  bills.forEach(async function (item) {
+    total += item.total;
+    quantity += item.quantity;
+    let sold = item.sold + item.quantity;
+    const res = await API.putData("product/" + item.idProduct, {
+      sold: sold,
+    });
+  });
+  let temp = {
+    id: "MER" + Date.now(),
+    total: total,
+    date: Date.now(),
+    details: bills,
+    sold: quantity,
+  };
+  invoices.push(temp);
+  const rest = await API.postData("invoice/", invoices);
+  newBill();
+};
+
 window.printPage = () => {
   if (!bills || bills.length <= 0) return;
 
@@ -660,28 +681,5 @@ window.printBill = () => {
     printWindow.print();
     printWindow.close();
   }, 500);
-};
-
-window.createInvoice = async () => {
-  if (!bills || bills.length <= 0) return;
-  let total = 0;
-  let quantity = 0;
-  bills.forEach(async function (item) {
-    total += item.total;
-    quantity += item.quantity;
-    let sold = item.sold + item.quantity;
-    const res = await API.putData("product/" + item.idProduct, {
-      sold: sold,
-    });
-  });
-  let temp = {
-    id: "INV" + invoices.length,
-    total: total,
-    date: Date.now(),
-    details: bills,
-    sold: quantity,
-  };
-  invoices.push(temp);
-  const rest = await API.postData("invoice/", invoices);
-  newBill();
+  createInvoice();
 };
