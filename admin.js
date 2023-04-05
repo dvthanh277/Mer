@@ -30,10 +30,9 @@ window.handleChangeDate = (event) => {
   }
   if (selectedDate.getTime() < today.getTime()) {
     var timeDiff = Math.abs(selectedDate.getTime() - today.getTime());
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
     filterDataByDate(diffDays);
   } else {
-    console.log("lon hon");
     filterDataByDate(-1);
   }
 };
@@ -203,7 +202,7 @@ window.handleCancelInvoice = async () => {
   $("#cancelInvoice_modal").modal("hide");
 };
 const convertDate = (date) => {
-  let date_convert = new Date(date).toDateString();
+  let date_convert = new Date(date).toLocaleDateString();
   return date_convert;
 };
 const convertVnDate = (date, isNumber) => {
