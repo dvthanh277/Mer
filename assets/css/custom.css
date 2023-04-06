@@ -90,7 +90,7 @@
 
 .navbar {
     position: fixed !important;
-    width: calc(100% - 4.5rem);
+    width: 100%;
     z-index: 10;
     top: 0;
 }
@@ -121,6 +121,7 @@
     min-height: 91.8vh;
 }
 
+
 .have_topping {
     background-color: rgb(103 54 30) !important;
 }
@@ -150,4 +151,12 @@
 
 .have_topping .number_topping {
     display: block;
+}
+
+* {
+    user-select: none;
+}
+
+#invoice_content {
+    padding-bottom: 280px;
 }

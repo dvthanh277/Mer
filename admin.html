@@ -100,145 +100,452 @@
       <div id="admin">
         <div class="content-inner mt-5 py-0">
           <div class="row">
-            <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-6 d-flex align-items-center">
-                    <div class="header-title w-100">
-                      <h4 class="card-title">
-                        <span id="today_date" class="text-primary"></span>
-                      </h4>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card mb-0">
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="header-title w-100">
+                            <h4 class="card-title">
+                              <span id="today_date" class="text-primary"></span>
+                            </h4>
+                          </div>
+                          <div class="d-flex">
+                            <button
+                              class="btn btn-sm btn-outline-primary rounded-pill me-2"
+                              onclick="prevDay()"
+                            >
+                              <svg
+                                width="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M11.8585 17.4101C12.0925 17.2839 12.2384 17.0438 12.2384 16.7827V12.7173H20.2657C20.671 12.7173 21 12.396 21 12C21 11.6041 20.671 11.2828 20.2657 11.2828H12.2384V7.21731C12.2384 6.95527 12.0925 6.71523 11.8585 6.58995C11.6245 6.46275 11.3386 6.47136 11.1125 6.61003L3.34267 11.3927C3.12924 11.5247 3 11.7533 3 12C3 12.2468 3.12924 12.4753 3.34267 12.6073L11.1125 17.39C11.2319 17.4627 11.368 17.5 11.5041 17.5C11.6255 17.5 11.7479 17.4694 11.8585 17.4101Z"
+                                  fill="currentColor"
+                                ></path>
+                              </svg>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-primary rounded-pill"
+                              onclick="nextDay()"
+                            >
+                              <svg
+                                width="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M12.1415 6.5899C11.9075 6.71614 11.7616 6.95618 11.7616 7.21726V11.2827H3.73429C3.32896 11.2827 3 11.604 3 12C3 12.3959 3.32896 12.7172 3.73429 12.7172H11.7616V16.7827C11.7616 17.0447 11.9075 17.2848 12.1415 17.4101C12.3755 17.5372 12.6614 17.5286 12.8875 17.39L20.6573 12.6073C20.8708 12.4753 21 12.2467 21 12C21 11.7532 20.8708 11.5247 20.6573 11.3927L12.8875 6.60998C12.7681 6.5373 12.632 6.5 12.4959 6.5C12.3745 6.5 12.2521 6.5306 12.1415 6.5899Z"
+                                  fill="currentColor"
+                                ></path>
+                              </svg>
+                            </button>
+                            <button
+                              class="btn btn-sm btn-outline-primary rounded-pill ms-3"
+                              onclick="toDay()"
+                            >
+                              Today
+                            </button>
+                          </div>
+                          <a
+                            href="#history_invoice"
+                            class="ms-3"
+                            style="width: 60%"
+                            >Lịch sử hóa đơn</a
+                          >
+
+                          <!-- <input
+                            type="date"
+                            class="form-control ms-3"
+                            id="select_date"
+                            onchange="handleChangeDate(this)"
+                          /> -->
+                        </div>
+                      </div>
                     </div>
-                    <input
-                      type="date"
-                      class="form-control ms-3"
-                      id="select_date"
-                      onchange="handleChangeDate(this)"
-                    />
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card bg-soft-primary">
+                            <div class="card-body">
+                              <div
+                                class="d-flex flex-column align-items-between"
+                              >
+                                <div>
+                                  <div class="d-flex">
+                                    <div
+                                      class="bg-primary text-white p-2 rounded"
+                                    >
+                                      <svg
+                                        width="25"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M4.56517 3C3.70108 3 3 3.71286 3 4.5904V5.52644C3 6.17647 3.24719 6.80158 3.68936 7.27177L8.5351 12.4243L8.53723 12.4211C9.47271 13.3788 9.99905 14.6734 9.99905 16.0233V20.5952C9.99905 20.9007 10.3187 21.0957 10.584 20.9516L13.3436 19.4479C13.7602 19.2204 14.0201 18.7784 14.0201 18.2984V16.0114C14.0201 14.6691 14.539 13.3799 15.466 12.4243L20.3117 7.27177C20.7528 6.80158 21 6.17647 21 5.52644V4.5904C21 3.71286 20.3 3 19.4359 3H4.56517Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mt-3">
+                                  <span>Ly đã bán</span>
+                                  <div>
+                                    <h3
+                                      class="counter"
+                                      style="visibility: visible"
+                                      id="soly"
+                                    >
+                                      0
+                                    </h3>
+                                  </div>
+                                </div>
+                                <div
+                                  class="position-absolute"
+                                  style="right: 10px"
+                                >
+                                  <div class="badge" id="phantramly">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20px"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"
+                                      ></path>
+                                    </svg>
+                                    <span></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card bg-soft-info">
+                            <div class="card-body">
+                              <div
+                                class="d-flex flex-column align-items-between"
+                              >
+                                <div>
+                                  <div class="d-flex">
+                                    <div class="bg-info text-white p-2 rounded">
+                                      <svg
+                                        width="25"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M14.7379 2.76175H8.08493C6.00493 2.75375 4.29993 4.41175 4.25093 6.49075V17.2037C4.20493 19.3167 5.87993 21.0677 7.99293 21.1147C8.02393 21.1147 8.05393 21.1157 8.08493 21.1147H16.0739C18.1679 21.0297 19.8179 19.2997 19.8029 17.2037V8.03775L14.7379 2.76175Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                        <path
+                                          d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                        <path
+                                          d="M14.2882 15.3584H8.88818"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                        <path
+                                          d="M12.2432 11.606H8.88721"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mt-3">
+                                  <span>Đơn đã bán</span>
+                                  <div>
+                                    <h3
+                                      class="counter"
+                                      style="visibility: visible"
+                                      id="sodon"
+                                    >
+                                      0
+                                    </h3>
+                                  </div>
+                                </div>
+                                <div
+                                  class="position-absolute"
+                                  style="right: 10px"
+                                >
+                                  <div class="badge" id="phantramdon">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20px"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"
+                                      ></path>
+                                    </svg>
+                                    <span></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card bg-soft-success">
+                            <div class="card-body">
+                              <div
+                                class="d-flex align-items-center justify-content-between"
+                              >
+                                <div class="bg-soft-success rounded p-2">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="35px"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <div>
+                                  <h1
+                                    class="text-success counter"
+                                    style="visibility: visible"
+                                    id="doanhthu"
+                                  >
+                                    0 đ
+                                  </h1>
+                                  <p class="text-success mb-0">Doanh thu</p>
+                                </div>
+                                <div>
+                                  <div class="badge" id="phantramdoanhthu">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20px"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"
+                                      ></path>
+                                    </svg>
+                                    <span></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-xl-4">
-                    <div class="card bg-soft-primary">
-                      <div class="card-body">
-                        <div
-                          class="d-flex justify-content-between align-itmes-center"
-                        >
-                          <div>
-                            <div class="p-3 rounded bg-soft-primary">
-                              <svg
-                                width="32"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M4.56517 3C3.70108 3 3 3.71286 3 4.5904V5.52644C3 6.17647 3.24719 6.80158 3.68936 7.27177L8.5351 12.4243L8.53723 12.4211C9.47271 13.3788 9.99905 14.6734 9.99905 16.0233V20.5952C9.99905 20.9007 10.3187 21.0957 10.584 20.9516L13.3436 19.4479C13.7602 19.2204 14.0201 18.7784 14.0201 18.2984V16.0114C14.0201 14.6691 14.539 13.3799 15.466 12.4243L20.3117 7.27177C20.7528 6.80158 21 6.17647 21 5.52644V4.5904C21 3.71286 20.3 3 19.4359 3H4.56517Z"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div>
-                            <h1 id="soly" class="text-primary counter"></h1>
-                            <p class="mb-0">Ly Đã Bán</p>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-9 d-flex align-items-center">
+                          <div class="header-title w-100">
+                            <h4 class="card-title">
+                              <span>Hôm qua</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-6">
-                    <div class="card bg-soft-info">
-                      <div class="card-body">
-                        <div
-                          class="d-flex justify-content-between align-itmes-center"
-                        >
-                          <div>
-                            <div class="p-3 rounded bg-soft-info">
-                              <svg
-                                width="32"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card bg-soft-secondary">
+                            <div class="card-body">
+                              <div
+                                class="d-flex flex-column align-items-between"
                               >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M14.7379 2.76175H8.08493C6.00493 2.75375 4.29993 4.41175 4.25093 6.49075V17.2037C4.20493 19.3167 5.87993 21.0677 7.99293 21.1147C8.02393 21.1147 8.05393 21.1157 8.08493 21.1147H16.0739C18.1679 21.0297 19.8179 19.2997 19.8029 17.2037V8.03775L14.7379 2.76175Z"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                                <path
-                                  d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                                <path
-                                  d="M14.2882 15.3584H8.88818"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                                <path
-                                  d="M12.2432 11.606H8.88721"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                              </svg>
+                                <div>
+                                  <div class="d-flex">
+                                    <div
+                                      class="bg-primary text-white p-2 rounded"
+                                    >
+                                      <svg
+                                        width="25"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M4.56517 3C3.70108 3 3 3.71286 3 4.5904V5.52644C3 6.17647 3.24719 6.80158 3.68936 7.27177L8.5351 12.4243L8.53723 12.4211C9.47271 13.3788 9.99905 14.6734 9.99905 16.0233V20.5952C9.99905 20.9007 10.3187 21.0957 10.584 20.9516L13.3436 19.4479C13.7602 19.2204 14.0201 18.7784 14.0201 18.2984V16.0114C14.0201 14.6691 14.539 13.3799 15.466 12.4243L20.3117 7.27177C20.7528 6.80158 21 6.17647 21 5.52644V4.5904C21 3.71286 20.3 3 19.4359 3H4.56517Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mt-3">
+                                  <span>Ly đã bán</span>
+                                  <div>
+                                    <h3
+                                      class="counter"
+                                      style="visibility: visible"
+                                      id="lyhomqua"
+                                    >
+                                      0
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div>
-                            <h1 id="sodon" class="text-info counter"></h1>
-                            <p class="mb-0">Đơn Đã Bán</p>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card bg-soft-secondary">
+                            <div class="card-body">
+                              <div
+                                class="d-flex flex-column align-items-between"
+                              >
+                                <div>
+                                  <div class="d-flex">
+                                    <div class="bg-info text-white p-2 rounded">
+                                      <svg
+                                        width="25"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M14.7379 2.76175H8.08493C6.00493 2.75375 4.29993 4.41175 4.25093 6.49075V17.2037C4.20493 19.3167 5.87993 21.0677 7.99293 21.1147C8.02393 21.1147 8.05393 21.1157 8.08493 21.1147H16.0739C18.1679 21.0297 19.8179 19.2997 19.8029 17.2037V8.03775L14.7379 2.76175Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                        <path
+                                          d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                        <path
+                                          d="M14.2882 15.3584H8.88818"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                        <path
+                                          d="M12.2432 11.606H8.88721"
+                                          stroke="currentColor"
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mt-3">
+                                  <span>Đơn đã bán</span>
+                                  <div>
+                                    <h3
+                                      class="counter"
+                                      style="visibility: visible"
+                                      id="donhomqua"
+                                    >
+                                      0
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl-4 col-lg-6">
-                    <div class="card bg-soft-success">
-                      <div class="card-body">
-                        <div
-                          class="d-flex align-items-center justify-content-between"
-                        >
-                          <div class="bg-soft-success rounded p-3">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="35px"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div>
-                            <h1
-                              class="text-success counter"
-                              style="visibility: visible"
-                              id="doanhthu"
-                            ></h1>
-                            <p class="text-success mb-0">Doanh Thu</p>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card bg-soft-secondary">
+                            <div class="card-body">
+                              <div
+                                class="d-flex align-items-center justify-content-between"
+                              >
+                                <div class="bg-soft-success rounded p-2">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="35px"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <div>
+                                  <h1
+                                    class="text-success counter"
+                                    style="visibility: visible"
+                                    id="doanhthuhomqua"
+                                  >
+                                    0 đ
+                                  </h1>
+                                  <p class="text-success mb-0">Doanh thu</p>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -248,15 +555,93 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="content-inner mt-5 py-0">
           <div class="row">
-            <div class="card">
-              <div
-                class="card-header d-flex align-items-center justify-content-between border-bottom-0"
-              >
-                <div class="header-title">
-                  <h4 class="card-title">Lịch sử hóa đơn</h4>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-12 d-flex align-items-center">
+                      <div class="header-title w-100 d-flex align-items-center">
+                        <h4 class="card-title me-4">
+                          <span id="monthNow">Tháng</span>
+                        </h4>
+                        <div class="d-flex me-5">
+                          <button
+                            class="btn btn-sm btn-outline-primary rounded-pill me-2"
+                            onclick="prevMonth()"
+                          >
+                            <svg
+                              width="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M11.8585 17.4101C12.0925 17.2839 12.2384 17.0438 12.2384 16.7827V12.7173H20.2657C20.671 12.7173 21 12.396 21 12C21 11.6041 20.671 11.2828 20.2657 11.2828H12.2384V7.21731C12.2384 6.95527 12.0925 6.71523 11.8585 6.58995C11.6245 6.46275 11.3386 6.47136 11.1125 6.61003L3.34267 11.3927C3.12924 11.5247 3 11.7533 3 12C3 12.2468 3.12924 12.4753 3.34267 12.6073L11.1125 17.39C11.2319 17.4627 11.368 17.5 11.5041 17.5C11.6255 17.5 11.7479 17.4694 11.8585 17.4101Z"
+                                fill="currentColor"
+                              ></path>
+                            </svg>
+                          </button>
+                          <button
+                            class="btn btn-sm btn-outline-primary rounded-pill"
+                            onclick="nextMonth()"
+                          >
+                            <svg
+                              width="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M12.1415 6.5899C11.9075 6.71614 11.7616 6.95618 11.7616 7.21726V11.2827H3.73429C3.32896 11.2827 3 11.604 3 12C3 12.3959 3.32896 12.7172 3.73429 12.7172H11.7616V16.7827C11.7616 17.0447 11.9075 17.2848 12.1415 17.4101C12.3755 17.5372 12.6614 17.5286 12.8875 17.39L20.6573 12.6073C20.8708 12.4753 21 12.2467 21 12C21 11.7532 20.8708 11.5247 20.6573 11.3927L12.8875 6.60998C12.7681 6.5373 12.632 6.5 12.4959 6.5C12.3745 6.5 12.2521 6.5306 12.1415 6.5899Z"
+                                fill="currentColor"
+                              ></path>
+                            </svg>
+                          </button>
+                          <button
+                            class="btn btn-sm btn-outline-primary rounded-pill ms-3"
+                            onclick="toMonth()"
+                          >
+                            Today
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div id="chart-doanhthu"></div>
+                  <div class="d-flex">
+                    <h4 class="card-title ps-5 pt-3">
+                      <span>Tổng cộng: </span>
+                      <span class="text-success" id="doanhthu30day"></span>
+                    </h4>
+                    <h4 class="card-title ps-5 pt-3">
+                      <span>Số ly: </span>
+                      <span class="text-primary" id="ly30day"></span>
+                    </h4>
+                    <h4 class="card-title ps-5 pt-3">
+                      <span>Số đơn: </span>
+                      <span class="text-info" id="don30day"></span>
+                    </h4>
+                  </div>
+                  <div id="chart-sodon"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-inner mt-5 py-0" id="history_invoice">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div
+                  class="card-header d-flex align-items-center justify-content-between border-bottom-0"
+                >
+                  <div class="header-title">
+                    <h4 class="card-title">Lịch sử hóa đơn</h4>
+                  </div>
                 </div>
               </div>
             </div>
@@ -316,14 +701,8 @@
         </div>
       </div>
     </div>
-    <!-- Wrapper End-->
-    <!-- Required Library Bundle Script -->
     <script src="./assets/js/core/libs.min.js"></script>
-    <!-- External Library Bundle Script -->
-    <script src="./assets/js/core/external.min.js"></script>
-    <!-- Mapchart JavaScript -->
-    <script src="./assets/js/charts/dashboard.js"></script>
-    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="./assets/js/chart.js"></script>
     <script src="./main.js"></script>
     <script type="module" src="./admin.js"></script>
   </body>
