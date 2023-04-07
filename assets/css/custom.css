@@ -160,3 +160,13 @@
 #invoice_content {
     padding-bottom: 280px;
 }
+
+.TP010 .card {
+    background: #527384;
+
+}
+
+.TP010 h6,
+.TP010 span {
+    color: #fff !important
+}

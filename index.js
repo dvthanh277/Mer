@@ -74,6 +74,11 @@ var idTemp, sizeTemp;
 window.openToppingModal = (id, size) => {
   idTemp = id;
   sizeTemp = size;
+  if (size === "L") {
+    document.querySelector(".TP010").style.display = "none";
+  } else {
+    document.querySelector(".TP010").style.display = "block";
+  }
   $("#toppingModal").modal("show");
 };
 window.handleAddItemTopping = () => {
@@ -186,9 +191,9 @@ const renderTopping = (data) => {
   if (data) {
     topping_items.innerHTML = data
       .map((element) => {
-        return `<div class="col-4 mb-3 position-relative">
+        return `<div class="col-4 mb-3 position-relative ${element.id}">
         <div
-          class="card card-white dish-card profile-img mb-0 index"
+          class="card card-white dish-card profile-img mb-0 index "
           onclick="handleAddTopping('${element.id}',this)"
         >
           <div class="p-3">
@@ -223,7 +228,11 @@ window.handleAddTopping = (id_topping, event) => {
   const index = topping_adds.findIndex((element) => element.id === id_topping);
   const number = event.querySelector(".number_topping");
   if (index !== -1) {
-    topping_adds[index].quantity += 1;
+    if (id_topping === "TP010") {
+      topping_adds[index].quantity = 1;
+    } else {
+      topping_adds[index].quantity += 1;
+    }
     topping_adds[index].total =
       topping_adds[index].quantity * topping_adds[index].price;
     number.innerHTML = topping_adds[index].quantity;
