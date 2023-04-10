@@ -19,6 +19,9 @@ window.onload = async function () {
   await getInvoices();
   await getSales();
   console.log(sales);
+  if (sales[0].sale == 0) {
+    document.querySelector("#khuyenmai").style.display = "none";
+  }
   search_input.focus();
   search_input.addEventListener("input", function (e) {
     handleSearch(search_input.value);
@@ -544,7 +547,7 @@ window.createInvoice = async () => {
     details: bills,
     sold: quantity,
     sale: sales[0].sale || 0,
-    realTotal: ((100 - sales[0].sale) / 100) * total,
+    realTotal: ((100 - sales[0].sale) / 100) * total || total,
   };
   invoices.push(temp);
   const rest = await API.postData("invoice/", invoices);
