@@ -7,6 +7,7 @@ const bill_topping = document.querySelector("#topping_add");
 const search_input = document.querySelector("#search_input");
 const total_quantity_element = document.querySelector("#total_quantity");
 const total_money_element = document.querySelector("#total_money");
+const saleInput = document.querySelector("#saleInput");
 var products;
 var invoices;
 var sales;
@@ -19,9 +20,9 @@ window.onload = async function () {
   await getInvoices();
   await getSales();
   console.log(sales);
-  if (sales[0].sale == 0) {
-    document.querySelector("#khuyenmai").style.display = "none";
-  }
+  saleInput.value = sales[0].sale || 0;
+  checkSaleButton();
+
   search_input.focus();
   search_input.addEventListener("input", function (e) {
     handleSearch(search_input.value);
@@ -528,10 +529,11 @@ window.handleClickCategory = (category, event) => {
   console.log(temp);
 };
 
-window.createInvoice = async () => {
+window.createInvoice = async (sale) => {
   if (!bills || bills.length <= 0) return;
   let total = 0;
   let quantity = 0;
+  let saleValue = sale ? sales[0].sale || 0 : 0;
   bills.forEach(async function (item) {
     total += item.total;
     quantity += item.quantity;
@@ -546,8 +548,8 @@ window.createInvoice = async () => {
     date: Date.now(),
     details: bills,
     sold: quantity,
-    sale: sales[0].sale || 0,
-    realTotal: ((100 - sales[0].sale) / 100) * total || total,
+    sale: saleValue,
+    realTotal: ((100 - saleValue) / 100) * total || total,
   };
   invoices.push(temp);
   const rest = await API.postData("invoice/", invoices);
@@ -744,7 +746,7 @@ window.printBill = () => {
     printWindow.print();
     printWindow.close();
   }, 500);
-  createInvoice();
+  createInvoice(false);
 };
 window.printBillKM = () => {
   if (!bills || bills.length <= 0) return;
@@ -865,5 +867,25 @@ window.printBillKM = () => {
     printWindow.print();
     printWindow.close();
   }, 500);
-  createInvoice();
+  createInvoice(true);
+};
+
+window.openSaleModal = () => {
+  $("#saleModal").modal("show");
+};
+window.closeSaleModal = () => {
+  $("#saleModal").modal("hide");
+};
+window.handleSaveSale = async () => {
+  sales[0].sale = parseInt(saleInput.value) || 0;
+  const rest = await API.postData("sales/", sales);
+  checkSaleButton();
+  closeSaleModal();
+};
+const checkSaleButton = () => {
+  if (saleInput.value == 0) {
+    document.querySelector("#khuyenmai").style.display = "none";
+  } else {
+    document.querySelector("#khuyenmai").style.display = "block";
+  }
 };
