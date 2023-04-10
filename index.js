@@ -696,7 +696,13 @@ window.printBill = () => {
                   <td><span class="quantity">x${element.quantity}</span>
                   ${element.topping
                     .map((topping) => {
-                      return `<span class="quantity">x${topping.quantity}</span>`;
+                      return `<span class="quantityMulti">${
+                        topping.quantity > 1
+                          ? `<span class="priceOne">${formatNumber(
+                              topping.price
+                            )}</span><span>x${topping.quantity}</span>`
+                          : `x${topping.quantity}`
+                      } </span>`;
                     })
                     .join("")}
                    </td>
@@ -714,8 +720,14 @@ window.printBill = () => {
                   return `<tr>
                   <td>${element.name} ${
                     element.group == "NUOC" ? `(${element.size})` : ``
-                  }</td>
-                  <td>x${element.quantity}</td>
+                  } </td>
+                  ${
+                    element.quantity > 1
+                      ? `  <td class="priceMulti"><span class="priceOne">${formatNumber(
+                          element.price
+                        )}</span> x${element.quantity}</td>`
+                      : `<td>x${element.quantity}</td>`
+                  }
                   <td>${formatNumber(element.total)}</td>
                 </tr>`;
                 }
@@ -787,50 +799,60 @@ window.printBillKM = () => {
         </p>
         <div class="items">
           <table>
-            <tbody>
-            ${bills
-              .map((element) => {
-                total += element.total;
-                if (element.topping.length > 0) {
-                  return `<tr>
-                  <td><span class="name">${element.name} (${
-                    element.size
-                  })</span>
-                    ${element.topping
-                      .map((topping) => {
-                        return `<span class="topping">${topping.name}</span>`;
-                      })
-                      .join("")}
-                  </td>
-                  <td><span class="quantity">x${element.quantity}</span>
+          <tbody>
+          ${bills
+            .map((element) => {
+              total += element.total;
+              if (element.topping.length > 0) {
+                return `<tr>
+                <td><span class="name">${element.name} (${element.size})</span>
                   ${element.topping
                     .map((topping) => {
-                      return `<span class="quantity">x${topping.quantity}</span>`;
+                      return `<span class="topping">${topping.name}</span>`;
                     })
                     .join("")}
-                   </td>
-                  <td><span class="total">${formatNumber(element.price)}</span>
-                  ${element.topping
-                    .map((topping) => {
-                      return `<span class="total">${formatNumber(
-                        topping.total
-                      )}</span>`;
-                    })
-                    .join("")}
-                  </td>
-                </tr>`;
-                } else {
-                  return `<tr>
-                  <td>${element.name} ${
-                    element.group == "NUOC" ? `(${element.size})` : ``
-                  }</td>
-                  <td>x${element.quantity}</td>
-                  <td>${formatNumber(element.total)}</td>
-                </tr>`;
+                </td>
+                <td><span class="quantity">x${element.quantity}</span>
+                ${element.topping
+                  .map((topping) => {
+                    return `<span class="quantityMulti">${
+                      topping.quantity > 1
+                        ? `<span class="priceOne">${formatNumber(
+                            topping.price
+                          )}</span><span>x${topping.quantity}</span>`
+                        : `x${topping.quantity}`
+                    } </span>`;
+                  })
+                  .join("")}
+                 </td>
+                <td><span class="total">${formatNumber(element.price)}</span>
+                ${element.topping
+                  .map((topping) => {
+                    return `<span class="total">${formatNumber(
+                      topping.total
+                    )}</span>`;
+                  })
+                  .join("")}
+                </td>
+              </tr>`;
+              } else {
+                return `<tr>
+                <td>${element.name} ${
+                  element.group == "NUOC" ? `(${element.size})` : ``
+                } </td>
+                ${
+                  element.quantity > 1
+                    ? `  <td class="priceMulti"><span class="priceOne">${formatNumber(
+                        element.price
+                      )}</span> x${element.quantity}</td>`
+                    : `<td>x${element.quantity}</td>`
                 }
-              })
-              .join("")}
-            </tbody>
+                <td>${formatNumber(element.total)}</td>
+              </tr>`;
+              }
+            })
+            .join("")}
+          </tbody>
             <tfoot>
               <tr>
                 <td colspan="2">Tổng tiền</td>
