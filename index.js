@@ -9,6 +9,7 @@ const total_quantity_element = document.querySelector("#total_quantity");
 const total_money_element = document.querySelector("#total_money");
 var products;
 var invoices;
+var sales;
 var topping;
 var bills = [];
 var topping_adds = [];
@@ -16,7 +17,8 @@ var topping_adds = [];
 window.onload = async function () {
   await getProducts();
   await getInvoices();
-  console.log(invoices);
+  await getSales();
+  console.log(sales);
   search_input.focus();
   search_input.addEventListener("input", function (e) {
     handleSearch(search_input.value);
@@ -131,6 +133,9 @@ const getProducts = async () => {
 };
 const getInvoices = async () => {
   invoices = (await API.getData("invoice")) || [];
+};
+const getSales = async () => {
+  sales = (await API.getData("sales")) || [];
 };
 const renderProduct = (data) => {
   if (data) {
@@ -538,6 +543,8 @@ window.createInvoice = async () => {
     date: Date.now(),
     details: bills,
     sold: quantity,
+    sale: sales[0].sale || 0,
+    realTotal: ((100 - sales[0].sale) / 100) * total,
   };
   invoices.push(temp);
   const rest = await API.postData("invoice/", invoices);
@@ -715,6 +722,127 @@ window.printBill = () => {
                 <td colspan="2">Tổng tiền</td>
                 <td>${formatNumber(total)}</td>
               </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="thank">♥ Cám ơn quý khách và hẹn gặp lại ♥</p>
+      </div>
+      `;
+  var printWindow = window.open("", "", "width=1280,height=720");
+  printWindow.document.write("<html><head><title>Print Page</title>");
+  printWindow.document.write(
+    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="./assets/css/print.css" />'
+  ); // định dạng trang in
+  printWindow.document.write("</head><body><div id='printBill'>");
+  printWindow.document.write(printBill.innerHTML);
+  printWindow.document.write("</div></body></html>");
+  printWindow.document.close();
+  setTimeout(function () {
+    printWindow.print();
+    printWindow.close();
+  }, 500);
+  createInvoice();
+};
+window.printBillKM = () => {
+  if (!bills || bills.length <= 0) return;
+
+  let currentdate = new Date();
+  let total = 0;
+  let date =
+    (currentdate.getDate() < 10
+      ? "0" + currentdate.getDate()
+      : currentdate.getDate()) +
+    "/" +
+    (currentdate.getMonth() + 1 < 10
+      ? "0" + (currentdate.getMonth() + 1)
+      : currentdate.getMonth() + 1);
+  +currentdate.getFullYear;
+
+  let time =
+    (currentdate.getHours() < 10
+      ? "0" + currentdate.getHours()
+      : currentdate.getHours()) +
+    ":" +
+    (currentdate.getMinutes() < 10
+      ? "0" + currentdate.getMinutes()
+      : currentdate.getMinutes());
+
+  var printBill = document.getElementById("printBill"); // lấy nội dung muốn in
+  printBill.innerHTML = `
+  <div class="logo-bill">
+        <img src="./assets/images/logoBill.png" alt="" />
+      </div>
+      <p class="bill-address bold">E39 tổ 3, ấp Phước Thiện, xã Phước Tỉnh</p>
+      <p class="bill-address">(Hẻm nhà hàng Minh Phương vào 100m)</p>
+      <p class="bill-address phone">SDT: 05634.03465</p>
+      <div class="bill-item">
+        <p class="title">PHIẾU THANH TOÁN</p>
+        <p class="bill-time">
+          <span class="time">${time}</span><span class="date">${date}</span>
+        </p>
+        <div class="items">
+          <table>
+            <tbody>
+            ${bills
+              .map((element) => {
+                total += element.total;
+                if (element.topping.length > 0) {
+                  return `<tr>
+                  <td><span class="name">${element.name} (${
+                    element.size
+                  })</span>
+                    ${element.topping
+                      .map((topping) => {
+                        return `<span class="topping">${topping.name}</span>`;
+                      })
+                      .join("")}
+                  </td>
+                  <td><span class="quantity">x${element.quantity}</span>
+                  ${element.topping
+                    .map((topping) => {
+                      return `<span class="quantity">x${topping.quantity}</span>`;
+                    })
+                    .join("")}
+                   </td>
+                  <td><span class="total">${formatNumber(element.price)}</span>
+                  ${element.topping
+                    .map((topping) => {
+                      return `<span class="total">${formatNumber(
+                        topping.total
+                      )}</span>`;
+                    })
+                    .join("")}
+                  </td>
+                </tr>`;
+                } else {
+                  return `<tr>
+                  <td>${element.name} ${
+                    element.group == "NUOC" ? `(${element.size})` : ``
+                  }</td>
+                  <td>x${element.quantity}</td>
+                  <td>${formatNumber(element.total)}</td>
+                </tr>`;
+                }
+              })
+              .join("")}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">Tổng tiền</td>
+                <td>${formatNumber(total)}</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="font-weight: 400;padding: 0;font-style: italic;">Khuyến mãi ${
+                  sales[0].sale
+                }%</td>
+                <td style="padding: 0;border-bottom: 1px dashed;padding-bottom: 5px;">-${formatNumber(
+                  (sales[0].sale / 100) * total
+                )}</td>
+              </tr>
+              <tr>
+              <td colspan="2">Thành tiền</td>
+              <td>${formatNumber(((100 - sales[0].sale) / 100) * total)}</td>
+            </tr>
             </tfoot>
           </table>
         </div>

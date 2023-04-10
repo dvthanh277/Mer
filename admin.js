@@ -134,7 +134,7 @@ window.filterDataByDate = (date) => {
   let tien = 0;
   filter_invoices.forEach(function (item) {
     ly += item.sold;
-    tien += item.total;
+    tien += item.realTotal;
   });
   soly.innerHTML = ly;
   sodon.innerHTML = don;
@@ -151,7 +151,7 @@ window.filterDataByDate = (date) => {
   let tien2 = 0;
   filter_invoices2.forEach(function (item) {
     ly2 += item.sold;
-    tien2 += item.total;
+    tien2 += item.realTotal;
   });
   lyhomqua.innerHTML = ly2;
   donhomqua.innerHTML = don2;
@@ -232,7 +232,7 @@ window.filterMonth = (month_filter) => {
   let tien = 0;
   filter_invoices.forEach(function (item) {
     ly += item.sold;
-    tien += item.total;
+    tien += item.realTotal;
   });
   ly30day.innerHTML = ly;
   don30day.innerHTML = don;
@@ -251,7 +251,7 @@ window.filterMonth = (month_filter) => {
       let don = date_item.length;
       date_item.forEach(function (item2) {
         ly += item2.sold;
-        tien += item2.total;
+        tien += item2.realTotal;
       });
       data_sodon.push(don);
       data_soly.push(ly);
@@ -412,11 +412,6 @@ window.filterMonth = (month_filter) => {
           return "Ngày " + val + " tháng " + (filter_month + 1);
         },
       },
-      y: {
-        formatter: function (val) {
-          return formatNumber(val) + "  đ";
-        },
-      },
     },
   };
   renderChart(options_lydon, "#chart-sodon");
@@ -433,6 +428,7 @@ const renderInvoice = (data) => {
       return new Date(b.date) - new Date(a.date);
     })
     .map((invoice) => {
+      console.log(invoice);
       return ` <div class="col">
     <div class="card order-history-card">
       <div class="card-body">
@@ -490,6 +486,7 @@ const renderInvoice = (data) => {
                 detail.total
               )}</h6>
             </div>
+            
           </div>
         </div>${index === invoice.details.length - 1 ? `` : `<hr />`}`;
           })
@@ -504,6 +501,16 @@ const renderInvoice = (data) => {
             <h6 class="heading-title fw-bolder text-primary">Tổng tiền: ${formatNumber(
               invoice.total
             )}đ</h6>
+            ${
+              invoice.sale > 0
+                ? ` <h6 class="heading-title fw-bolder text-primary">Khuyến mãi: ${
+                    invoice.sale
+                  }%</h6> <h6 class="heading-title fw-bolder text-primary">Thành tiền: ${formatNumber(
+                    invoice.realTotal
+                  )}đ</h6>`
+                : ``
+            }
+           
           </div>
           <div class="d-flex align-items-center">
             <button
