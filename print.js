@@ -1,27 +1,13 @@
-qz.websocket
-  .connect()
-  .then(() => {
-    return qz.printers.find();
-  })
-  .then((printers) => {
-    console.log(printers);
-    let config = qz.configs.create("PDF");
-    return qz.print(config, [
-      {
-        type: "pixel",
-        format: "html",
-        flavor: "plain",
-        data: "<h1>Hello JavaScript!</h1>",
-      },
-    ]);
-  })
-  .then(() => {
-    return qz.websocket.disconnect();
-  })
-  .then(() => {
-    // process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    // process.exit(1);
-  });
+function printDiv() {
+  // Get the div element you want to print
+  var divToPrint = document.getElementById("printBill");
+
+  // Create a print job
+  var printJob = {
+    printer: "InHoaDon",
+    data: divToPrint.innerHTML,
+  };
+
+  // Send the print job to QZ Tray
+  qz.print(printJob);
+}
