@@ -2,7 +2,7 @@ function printDiv() {
   // Get the div element you want to print
   var divToPrint = document.getElementById("printBill");
 
-  qz.websocket.connect({ host: "192.168.1.18" }).then(function () {
+  qz.websocket.connect({ host: "192.168.2.8" }).then(function () {
     console.log(qz.printers);
     return qz.printers.find("InHoaDon");              // Pass the printer name into the next Promise
   }).then(function (printer) {
