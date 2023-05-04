@@ -18,4 +18,3 @@ function printDiv() {
   }).catch(function (e) { console.error(e); });
 
 }
-printDiv()
