@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tiệm Trà MER</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <!-- Library / Plugin Css Build -->
+    <link rel="stylesheet" href="../assets/css/core/libs.min.css" />
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="../assets/css/aprycot.css" />
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
+  </head>
+
+  <body style="background: #ffe7bb7d">
+    <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
+      <div class="container-fluid">
+        <ul class="navbar-nav align-items-center navbar-list">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link py-0 d-flex align-items-center"
+              href="javascript:;"
+            >
+              <img
+                src="../assets/images/avatars/mer.jpg"
+                alt="User-Profile"
+                class="img-fluid avatar avatar-50 avatar-rounded"
+              />
+              <div class="caption ms-3 d-md-block">
+                <h6 class="mb-0 caption-title">Tiệm trà Mer</h6>
+                <p
+                  class="mb-0 caption-sub-title"
+                  onclick="window.location.href='../admin.html'"
+                >
+                  Admin
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="input-group search-input">
+          <span class="input-group-text" id="search-input">
+            <svg
+              width="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="11.7669"
+                cy="11.7666"
+                r="8.98856"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></circle>
+              <path
+                d="M18.0186 18.4851L21.5426 22"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Tìm kiếm..."
+            id="search_input"
+          />
+        </div>
+      </div>
+    </nav>
+    <div class="category-wrapper">
+      <div
+        class="category-icon"
+        style="transform: rotate(90deg)"
+        onclick="handleClickShowCategory()"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="24" height="24" rx="12" fill="#fff" />
+          <path
+            d="M10.25 8.5L13.75 12L10.25 15.5"
+            stroke="#EA6A12"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div
+        class="card active category-menu category-current"
+        onclick="handleClickShowCategory()"
+      >
+        <div class="card-body">
+          <div class="text-center">
+            <div class="category-image">
+              <img src="../assets/images/logo.png" alt="" />
+            </div>
+            <h6 class="heading-title fw-bolder category-title">Tất cả</h6>
+          </div>
+        </div>
+      </div>
+      <div class="category-content">
+        <div
+          class="card active category-menu"
+          onclick="handleClickCategory('ALL',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/logo.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">Tất cả</h6>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card category-menu"
+          onclick="handleClickCategory('TRASUA',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/bubble-tea.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">Trà sữa</h6>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card category-menu"
+          onclick="handleClickCategory('TRA',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/milk-tea.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">Trà</h6>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card category-menu"
+          onclick="handleClickCategory('MILKFOAM',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/milkfoam.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">MILKFOAM</h6>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card category-menu"
+          onclick="handleClickCategory('SUATUOI',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/milk.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">Sữa tươi</h6>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card category-menu"
+          onclick="handleClickCategory('COFFEE',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/coffee-cup.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">COFFEE</h6>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card category-menu"
+          onclick="handleClickCategory('BANH',this)"
+        >
+          <div class="card-body">
+            <div class="text-center">
+              <div class="category-image">
+                <img src="../assets/images/cupcake.png" alt="" />
+              </div>
+              <h6 class="heading-title fw-bolder category-title">Bánh</h6>
+            </div>
+          </div>
+        </div>
+        <!-- CATEGORY -->
+      </div>
+    </div>
+    <div id="menu_items"></div>
+
+    <div class="main-noidung" id="main-noidung">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex align-items-center justify-content-between">
+                <h4 class="list-main">HÓA ĐƠN</h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  onclick="closePopup('#main-noidung')"
+                ></button>
+              </div>
+              <div
+                class="total"
+                style="display: flex; justify-content: end; align-items: center"
+              >
+                <p id="total_quantity"></p>
+                <p id="total_money"></p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button
+                  class="btn btn-primary btn-xs rounded-pill ms-3"
+                  onclick="newBill()"
+                  id="newBill"
+                >
+                  Tạo đơn mới (F4)
+                </button>
+                <button
+                  class="btn btn-info btn-xs rounded-pill ms-1"
+                  onclick="openSaleModal()"
+                  id="settingSale"
+                >
+                  <svg
+                    width="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M20.8064 7.62361L20.184 6.54352C19.6574 5.6296 18.4905 5.31432 17.5753 5.83872V5.83872C17.1397 6.09534 16.6198 6.16815 16.1305 6.04109C15.6411 5.91402 15.2224 5.59752 14.9666 5.16137C14.8021 4.88415 14.7137 4.56839 14.7103 4.24604V4.24604C14.7251 3.72922 14.5302 3.2284 14.1698 2.85767C13.8094 2.48694 13.3143 2.27786 12.7973 2.27808H11.5433C11.0367 2.27807 10.5511 2.47991 10.1938 2.83895C9.83644 3.19798 9.63693 3.68459 9.63937 4.19112V4.19112C9.62435 5.23693 8.77224 6.07681 7.72632 6.0767C7.40397 6.07336 7.08821 5.98494 6.81099 5.82041V5.82041C5.89582 5.29601 4.72887 5.61129 4.20229 6.52522L3.5341 7.62361C3.00817 8.53639 3.31916 9.70261 4.22975 10.2323V10.2323C4.82166 10.574 5.18629 11.2056 5.18629 11.8891C5.18629 12.5725 4.82166 13.2041 4.22975 13.5458V13.5458C3.32031 14.0719 3.00898 15.2353 3.5341 16.1454V16.1454L4.16568 17.2346C4.4124 17.6798 4.82636 18.0083 5.31595 18.1474C5.80554 18.2866 6.3304 18.2249 6.77438 17.976V17.976C7.21084 17.7213 7.73094 17.6516 8.2191 17.7822C8.70725 17.9128 9.12299 18.233 9.37392 18.6717C9.53845 18.9489 9.62686 19.2646 9.63021 19.587V19.587C9.63021 20.6435 10.4867 21.5 11.5433 21.5H12.7973C13.8502 21.5001 14.7053 20.6491 14.7103 19.5962V19.5962C14.7079 19.088 14.9086 18.6 15.2679 18.2407C15.6272 17.8814 16.1152 17.6807 16.6233 17.6831C16.9449 17.6917 17.2594 17.7798 17.5387 17.9394V17.9394C18.4515 18.4653 19.6177 18.1544 20.1474 17.2438V17.2438L20.8064 16.1454C21.0615 15.7075 21.1315 15.186 21.001 14.6964C20.8704 14.2067 20.55 13.7894 20.1108 13.5367V13.5367C19.6715 13.284 19.3511 12.8666 19.2206 12.3769C19.09 11.8873 19.16 11.3658 19.4151 10.928C19.581 10.6383 19.8211 10.3982 20.1108 10.2323V10.2323C21.0159 9.70289 21.3262 8.54349 20.8064 7.63277V7.63277V7.62361Z"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <circle
+                      cx="12.1747"
+                      cy="11.8891"
+                      r="2.63616"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></circle>
+                  </svg>
+                  Khuyến mãi
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div id="bill_items"></div>
+
+              <div class="text-center mt-5 d-flex justify-content-center">
+                <button
+                  class="btn btn-warning rounded-pill me-3"
+                  onclick="printPage()"
+                >
+                  In tem (F1)
+                </button>
+                <button
+                  class="btn btn-success rounded-pill"
+                  onclick="printBill()"
+                >
+                  Tính tiền (F2)
+                </button>
+                <button
+                  class="btn btn-danger rounded-pill ms-3"
+                  onclick="printBillKM()"
+                  id="khuyenmai"
+                >
+                  Khuyến mãi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="bottom" onclick="openPopup('#main-noidung')">
+      <button class="cart-button">
+        <span class="cart-number" id="cart-number"></span>
+
+        <svg
+          width="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M14.1213 11.2331H16.8891C17.3088 11.2331 17.6386 10.8861 17.6386 10.4677C17.6386 10.0391 17.3088 9.70236 16.8891 9.70236H14.1213C13.7016 9.70236 13.3719 10.0391 13.3719 10.4677C13.3719 10.8861 13.7016 11.2331 14.1213 11.2331ZM20.1766 5.92749C20.7861 5.92749 21.1858 6.1418 21.5855 6.61123C21.9852 7.08067 22.0551 7.7542 21.9652 8.36549L21.0159 15.06C20.8361 16.3469 19.7569 17.2949 18.4879 17.2949H7.58639C6.25742 17.2949 5.15828 16.255 5.04837 14.908L4.12908 3.7834L2.62026 3.51807C2.22057 3.44664 1.94079 3.04864 2.01073 2.64043C2.08068 2.22305 2.47038 1.94649 2.88006 2.00874L5.2632 2.3751C5.60293 2.43735 5.85274 2.72207 5.88272 3.06905L6.07257 5.35499C6.10254 5.68257 6.36234 5.92749 6.68209 5.92749H20.1766ZM7.42631 18.9079C6.58697 18.9079 5.9075 19.6018 5.9075 20.459C5.9075 21.3061 6.58697 22 7.42631 22C8.25567 22 8.93514 21.3061 8.93514 20.459C8.93514 19.6018 8.25567 18.9079 7.42631 18.9079ZM18.6676 18.9079C17.8282 18.9079 17.1487 19.6018 17.1487 20.459C17.1487 21.3061 17.8282 22 18.6676 22C19.4969 22 20.1764 21.3061 20.1764 20.459C20.1764 19.6018 19.4969 18.9079 18.6676 18.9079Z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </button>
+      <div
+        class="total"
+        style="display: flex; justify-content: end; align-items: center"
+      >
+        <p id="total_quantity2"></p>
+        <p id="total_money2"></p>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-body">
+        <div class="right-panel">
+          © Tiệm trà MER
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          , Theme <a href="https://iqonic.design/">Aprycot®</a>.
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="modal fade"
+      id="toppingModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thêm Topping</h5>
+          </div>
+          <div class="modal-body" style="background: rgba(255, 231, 187, 0.49)">
+            <div class="row">
+              <div id="topping_items" class="row"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeAddTopping()"
+            >
+              Đóng
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="handleAddItemTopping()"
+            >
+              Thêm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="saleModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Cài đặt khuyến mãi
+            </h5>
+          </div>
+          <div class="modal-body" style="background: rgba(255, 231, 187, 0.49)">
+            <div class="row">
+              <div class="form-group">
+                <label class="form-label" for="exampleInputNumber1"
+                  >Phần trăm khuyến mãi</label
+                >
+                <input type="number" class="form-control" id="saleInput" />
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeSaleModal()"
+            >
+              Đóng
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              onclick="handleSaveSale()"
+            >
+              Lưu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="printContent"></div>
+    <div id="printBill"></div>
+    <!-- Wrapper End-->
+    <!-- Required Library Bundle Script -->
+    <script src="../assets/js/core/libs.min.js"></script>
+    <!-- External Library Bundle Script -->
+    <script src="../assets/js/core/external.min.js"></script>
+    <!-- Mapchart JavaScript -->
+    <script src="../assets/js/charts/dashboard.js"></script>
+
+    <script src="../main.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
