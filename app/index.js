@@ -665,7 +665,7 @@ window.printPage = () => {
   // printWindow.document.close(); // đóng trang in mới
   setTimeout(function () {
     printWindow.print(); // thực hiện lệnh in trang in mới
-    printWindow.close(); // đóng trang in mới sau khi in xong
+    // printWindow.close(); // đóng trang in mới sau khi in xong
   }, 800);
 };
 window.printBill = () => {
@@ -787,7 +787,7 @@ window.printBill = () => {
   // printWindow.document.close();
   setTimeout(function () {
     printWindow.print();
-    printWindow.close();
+    // printWindow.close();
   }, 800);
   // createInvoice(false);
 };
@@ -918,7 +918,7 @@ window.printBillKM = () => {
   // printWindow.document.close();
   setTimeout(function () {
     printWindow.print();
-    printWindow.close();
+    // printWindow.close();
   }, 800);
   createInvoice(true);
 };
