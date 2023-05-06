@@ -4,9 +4,7 @@
 
 
 
-#bill_items {
-    height: 54vh;
-}
+
 
 .category-menu .card-body {
     padding: 8px 0 8px 10px;
@@ -69,6 +67,7 @@
     height: 70px;
     transition: all 0.5s;
     overflow: hidden;
+    width: 100%;
 }
 
 .category-content {
@@ -125,7 +124,8 @@
 
 #total_money,
 #total_quantity {
-    font-size: 16px;
+    font-size: 14px;
+    opacity: 0.8;
 }
 
 .list-main {
@@ -144,18 +144,11 @@
 
 .main-noidung {
     padding-top: 0 !important;
-    left: 0;
-    top: 0;
-    position: fixed;
-    bottom: 0;
     width: 100%;
-    height: 100vh;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: none;
+}
+
+#billModal .modal-header {
+    display: block;
 }
 
 .main-noidung .card {
@@ -205,4 +198,63 @@
     border-radius: 50%;
     font-size: 14px;
     display: none;
+}
+
+#toppingModal .modal-body {
+    overflow: auto;
+}
+
+#toppingModal .heading-title {
+    font-size: 14px;
+}
+
+#toppingModal span.text-primary {
+    font-size: 14px;
+}
+
+#bill_items {
+    height: 54vh;
+}
+
+#bill_items .profile-img4 {
+    margin-left: 0;
+    padding: 0;
+    padding-bottom: 16px;
+}
+
+#bill_items .profile-img4 .profile-img11 {
+    width: 39px;
+    height: 39px;
+    margin-top: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#bill_items .profile-img4 .profile-img11 img {
+    width: 100%;
+}
+
+.profile-img4 .profile-content {
+    margin-left: 46px;
+}
+
+.bill-item {
+    margin-top: 16px;
+}
+
+.old-price {
+    font-size: 12px;
+    padding-right: 8px;
+}
+
+.bill-item .heading-title {
+    font-size: 14px;
+}
+
+.bill-item .text-dark {
+    font-size: 14px;
+}
+
+#saleModal {
+    z-index: 9999;
 }

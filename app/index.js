@@ -203,17 +203,17 @@ const renderTopping = (data) => {
   if (data) {
     topping_items.innerHTML = data
       .map((element) => {
-        return `<div class="col-4 mb-3 position-relative ${element.id}">
+        return `<div class="col-6 mb-2 position-relative ${element.id}">
         <div
           class="card card-white dish-card profile-img mb-0 index "
           onclick="handleAddTopping('${element.id}',this)"
         >
-          <div class="p-3">
-            <h6 class="heading-title fw-bolder mt-2 mb-0">
+          <div class="p-2">
+            <h6 class="heading-title fw-bolder mb-0">
               ${element.name}
             </h6>
             <div class="d-flex mt-1 flex-wrap">
-            <div class="d-flex align-items-center justify-content-between col-12 mb-2">
+            <div class="d-flex align-items-center justify-content-between col-12">
             <span class="text-primary fw-bolder me-2">${formatNumber(
               element.price
             )} đ</span>
@@ -307,14 +307,13 @@ const renderBill = (data) => {
       .map((element, index) => {
         total_quantity += element.quantity;
         total_money += element.total;
-        return `  <div class=" bill-item iq-my-cart">
+        return `  <div class="bill-item">
       <div
         class="d-flex align-items-center justify-content-between profile-img4"
       >
         <div class="profile-img11">
           <img
             src="../assets/images/menu/${element.image}"
-            class="img-fluid rounded-pill avatar-80"
             alt="img"
           />
         </div>
@@ -325,7 +324,7 @@ const renderBill = (data) => {
           element.group == "NUOC" ? `(${element.size})` : ``
         }
             </h6>
-            <span class="d-flex align-items-center">
+            <span class="d-flex align-items-center ms-2">
               <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${
                 element.invoiceId
               }')"> - </button>
@@ -339,7 +338,7 @@ const renderBill = (data) => {
             </span>
           </div>
         </div>
-        <div class="me-4 text-end">
+        <div class="text-end">
           <span class="mb-1" onclick="handleDelete('${element.invoiceId}')">
             <svg
               width="20"
@@ -372,17 +371,20 @@ const renderBill = (data) => {
         .map((topping) => {
           return `
         <div class="d-flex align-items-center justify-content-between">
-        <div class="d-flex align-items-center profile-content" style="margin-left: 125px">
+        <div class="d-flex align-items-center profile-content" style="margin-left: 68px">
           <div>
             <h6 class="mb-1 heading-title">
-              ${topping.name}   <small class="text-dark fw-bold ms-3 me-3">x ${
+              ${topping.name}   <small class="text-dark fw-bold ms-1 me-2">x ${
             topping.quantity
           }</small>
             </h6>
           </div>
         </div>
-        <div class="me-4 text-end">
-          <span class="mb-1" onclick="handleDeleteTopping('${
+        <div class="text-end" style="
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;">
+          <span class="mb-1 ms-2" onclick="handleDeleteTopping('${
             element.invoiceId
           }','${topping.id}')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -577,6 +579,7 @@ window.createInvoice = async (sale) => {
   };
   invoices.push(temp);
   const rest = await API.postData("invoice/", invoices);
+  closeBillModal();
   newBill();
 };
 
@@ -652,16 +655,18 @@ window.printPage = () => {
   var printWindow = window.open("", "", "width=1280,height=720"); // mở cửa sổ in mới với kích thước 72x22mm
   printWindow.document.write("<html><head><title>Print Page</title>"); // tạo tiêu đề cho trang in
   printWindow.document.write(
-    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
+    '<style type="text/css">@media print { body { margin: 0cm; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
   ); // định dạng trang in
-  printWindow.document.write("</head><body><div id='printContent'>");
+  printWindow.document.write(
+    "</head><body style='width:272px'><div id='printContent'>"
+  );
   printWindow.document.write(printContent.innerHTML); // in nội dung muốn in vào trang in mới
   printWindow.document.write("</div></body></html>");
-  printWindow.document.close(); // đóng trang in mới
+  // printWindow.document.close(); // đóng trang in mới
   setTimeout(function () {
     printWindow.print(); // thực hiện lệnh in trang in mới
     printWindow.close(); // đóng trang in mới sau khi in xong
-  }, 500);
+  }, 800);
 };
 window.printBill = () => {
   if (!bills || bills.length <= 0) return;
@@ -772,17 +777,19 @@ window.printBill = () => {
   var printWindow = window.open("", "", "width=1280,height=720");
   printWindow.document.write("<html><head><title>Print Page</title>");
   printWindow.document.write(
-    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
+    '<style type="text/css">@media print { body { margin: 0cm; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
   ); // định dạng trang in
-  printWindow.document.write("</head><body><div id='printBill'>");
+  printWindow.document.write(
+    "</head><body style='width:300px'><div id='printBill'>"
+  );
   printWindow.document.write(printBill.innerHTML);
   printWindow.document.write("</div></body></html>");
-  printWindow.document.close();
+  // printWindow.document.close();
   setTimeout(function () {
     printWindow.print();
     printWindow.close();
-  }, 500);
-  createInvoice(false);
+  }, 800);
+  // createInvoice(false);
 };
 window.printBillKM = () => {
   if (!bills || bills.length <= 0) return;
@@ -903,16 +910,16 @@ window.printBillKM = () => {
   var printWindow = window.open("", "", "width=1280,height=720");
   printWindow.document.write("<html><head><title>Print Page</title>");
   printWindow.document.write(
-    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
+    '<link rel="stylesheet" href="../assets/css/print.css" /> <style type="text/css">@media print { body { margin: 0cm; } }</style>  '
   ); // định dạng trang in
   printWindow.document.write("</head><body><div id='printBill'>");
   printWindow.document.write(printBill.innerHTML);
   printWindow.document.write("</div></body></html>");
-  printWindow.document.close();
+  // printWindow.document.close();
   setTimeout(function () {
     printWindow.print();
     printWindow.close();
-  }, 500);
+  }, 800);
   createInvoice(true);
 };
 
@@ -939,9 +946,9 @@ window.handleClickShowCategory = () => {
   $(".category-wrapper").toggleClass("active");
 };
 
-window.closePopup = (element) => {
-  $(element).hide();
+window.openBillModal = () => {
+  $("#billModal").modal("show");
 };
-window.openPopup = (element) => {
-  $(element).css("display", "flex");
+window.closeBillModal = () => {
+  $("#billModal").modal("hide");
 };

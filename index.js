@@ -339,7 +339,7 @@ const renderBill = (data) => {
             </span>
           </div>
         </div>
-        <div class="me-4 text-end">
+        <div class="text-end">
           <span class="mb-1" onclick="handleDelete('${element.invoiceId}')">
             <svg
               width="20"
@@ -381,7 +381,7 @@ const renderBill = (data) => {
             </h6>
           </div>
         </div>
-        <div class="me-4 text-end">
+        <div class="text-end">
           <span class="mb-1" onclick="handleDeleteTopping('${
             element.invoiceId
           }','${topping.id}')">
