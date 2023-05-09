@@ -1,0 +1,224 @@
+@page {
+    margin: 0cm 0cm 0cm 0cm !important;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#printContent {
+    width: 272px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+#printContent * {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#printContent .old-price {
+    text-decoration: line-through;
+    padding-right: 5px;
+    position: absolute;
+    top: 50px;
+    text-align: right;
+    right: 10px;
+}
+
+#printContent .print-item {
+    max-width: 126px;
+    min-width: 126px;
+    padding: 5px;
+    position: relative;
+}
+
+#printContent .print-time {
+    position: absolute;
+    right: 8px;
+    top: 4px;
+}
+
+#printContent .print-item span {
+    font-size: 8px;
+}
+
+#printContent .time {
+    padding-left: 5px;
+}
+
+#printContent .print-shop {
+    font-weight: bold;
+    border-bottom: 1px solid;
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+    padding-left: 4px;
+}
+
+#printContent .print-title {
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-left: 4px;
+}
+
+#printContent .print-price {
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+#printContent .print-topping {
+    min-height: 14px;
+    height: 30px;
+}
+
+#printContent .print-topping span {
+    display: block;
+    font-size: 7px;
+}
+
+#printBill {
+    width: 300px;
+    overflow: hidden;
+}
+
+#printBill * {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#printBill img {
+    width: 100%;
+}
+
+#printBill .logo-bill {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#printBill .bold {
+    font-weight: bold;
+}
+
+#printBill .bill-address {
+    text-align: center;
+    font-size: 13px;
+}
+
+#printBill .phone {
+    margin-top: 5px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 15px;
+    border-bottom: 1px dashed;
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 14px;
+}
+
+#printBill .title {
+    padding: 12px 0 0;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+}
+
+#printBill .bill-time {
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+#printBill .time {
+    margin-right: 5px;
+}
+
+#printBill .items {
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+    padding: 0 5px;
+}
+
+#printBill .items table {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 13px;
+    margin: 0 auto;
+
+}
+
+#printBill .items table td {
+    padding: 5px 0;
+    vertical-align: top;
+    border-bottom: 1px dotted;
+}
+
+#printBill .items table td span {
+    display: block;
+}
+
+#printBill .items table td span.topping {
+    padding-left: 8px;
+    font-style: italic;
+}
+
+#printBill .items table tfoot td {
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#printBill .items table td:first-child {
+    width: 60%;
+}
+
+#printBill .items table td:nth-of-type(2) {
+    text-align: right;
+}
+
+#printBill .items table td:last-child {
+    width: 20%;
+    text-align: right;
+}
+
+#printBill .thank {
+    text-align: center;
+    padding: 20px 0 40px;
+    font-style: italic;
+}
+
+#printBill .priceMulti {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#printBill .priceOne {
+    font-size: 11px;
+    font-style: italic;
+    padding-right: 2px;
+}
+
+#printBill .quantityMulti {
+    display: flex !important;
+    align-items: center;
+    justify-content: end;
+}

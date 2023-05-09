@@ -172,23 +172,25 @@ const renderProduct = (data) => {
           
             <div class="d-flex mt-1 flex-wrap justify-content-between menu-button">
               ${element.sizes
-            .map((size) => {
-              return `<div class="d-flex align-items-center justify-content-end">
+                .map((size) => {
+                  return `<div class="d-flex align-items-center justify-content-end">
                
                 <div class="d-flex align-items-center justify-content-between">
             
-              <button class="btn btn-success btn-sm rounded-pill fw-bolder" onclick="handleAddItem('${element.id
-                }','${size.name}')" style="min-width:47px">
+              <button class="btn btn-success btn-sm rounded-pill fw-bolder" onclick="handleAddItem('${
+                element.id
+              }','${size.name}')" style="min-width:47px">
             ${size.name}</button>
-              ${element.group == "NUOC"
+              ${
+                element.group == "NUOC"
                   ? `    <button class="btn btn-warning btn-xs rounded-pill ms-3" onclick="openToppingModal('${element.id}','${size.name}')">
               +Topping</button>`
                   : ``
-                }
+              }
               </div>
               </div>`;
-            })
-            .join("")}
+                })
+                .join("")}
             </div>
           </div>
         </div>
@@ -213,8 +215,8 @@ const renderTopping = (data) => {
             <div class="d-flex mt-1 flex-wrap">
             <div class="d-flex align-items-center justify-content-between col-12">
             <span class="text-primary fw-bolder me-2">${formatNumber(
-          element.price
-        )} đ</span>
+              element.price
+            )} đ</span>
             </div>
             </div>
           </div>
@@ -318,16 +320,20 @@ const renderBill = (data) => {
         <div class="d-flex align-items-center profile-content">
           <div>
             <h6 class="mb-1 heading-title fw-bolder">
-              ${element.name}  ${element.group == "NUOC" ? `(${element.size})` : ``
-          }
+              ${element.name}  ${
+          element.group == "NUOC" ? `(${element.size})` : ``
+        }
             </h6>
             <span class="d-flex align-items-center ms-2">
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${element.invoiceId
-          }')"> - </button>
-              <small class="text-dark fw-bold ms-3 me-3">x ${element.quantity
-          }</small>
-              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncrease('${element.invoiceId
-          }')"> + </button>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleDecrease('${
+                element.invoiceId
+              }')"> - </button>
+              <small class="text-dark fw-bold ms-3 me-3">x ${
+                element.quantity
+              }</small>
+              <button type="button" class="btn btn-primary btn-xs" onclick="handleIncrease('${
+                element.invoiceId
+              }')"> + </button>
          
             </span>
           </div>
@@ -352,23 +358,25 @@ const renderBill = (data) => {
               />
             </svg>
           </span>
-          <p class="mb-0 text-dark">${element.topping.length > 0
-            ? `<span class="old-price">${formatNumber(
-              element.price
-            )}đ</span>${formatNumber(element.total)}đ`
-            : `${formatNumber(element.total)}đ`
+          <p class="mb-0 text-dark">${
+            element.topping.length > 0
+              ? `<span class="old-price">${formatNumber(
+                  element.price
+                )}đ</span>${formatNumber(element.total)}đ`
+              : `${formatNumber(element.total)}đ`
           }</p>
         </div>
       </div>
       ${element.topping
-            .map((topping) => {
-              return `
+        .map((topping) => {
+          return `
         <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center profile-content" style="margin-left: 68px">
           <div>
             <h6 class="mb-1 heading-title">
-              ${topping.name}   <small class="text-dark fw-bold ms-1 me-2">x ${topping.quantity
-                }</small>
+              ${topping.name}   <small class="text-dark fw-bold ms-1 me-2">x ${
+            topping.quantity
+          }</small>
             </h6>
           </div>
         </div>
@@ -376,8 +384,9 @@ const renderBill = (data) => {
         display: flex;
         flex-direction: row-reverse;
         align-items: center;">
-          <span class="mb-1 ms-2" onclick="handleDeleteTopping('${element.invoiceId
-                }','${topping.id}')">
+          <span class="mb-1 ms-2" onclick="handleDeleteTopping('${
+            element.invoiceId
+          }','${topping.id}')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path opacity="0.4" d="M19.6449 9.48924C19.6449 9.55724 19.112 16.298 18.8076 19.1349C18.6169 20.8758 17.4946 21.9318 15.8111 21.9618C14.5176 21.9908 13.2514 22.0008 12.0055 22.0008C10.6829 22.0008 9.38936 21.9908 8.1338 21.9618C6.50672 21.9228 5.38342 20.8458 5.20253 19.1349C4.88936 16.288 4.36613 9.55724 4.35641 9.48924C4.34668 9.28425 4.41281 9.08925 4.54703 8.93126C4.67929 8.78526 4.86991 8.69727 5.07026 8.69727H18.9408C19.1402 8.69727 19.3211 8.78526 19.464 8.93126C19.5973 9.08925 19.6644 9.28425 19.6449 9.48924" fill="#E60A0A"></path>
               <path d="M21 5.97686C21 5.56588 20.6761 5.24389 20.2871 5.24389H17.3714C16.7781 5.24389 16.2627 4.8219 16.1304 4.22692L15.967 3.49795C15.7385 2.61698 14.9498 2 14.0647 2H9.93624C9.0415 2 8.26054 2.61698 8.02323 3.54595L7.87054 4.22792C7.7373 4.8219 7.22185 5.24389 6.62957 5.24389H3.71385C3.32386 5.24389 3 5.56588 3 5.97686V6.35685C3 6.75783 3.32386 7.08982 3.71385 7.08982H20.2871C20.6761 7.08982 21 6.75783 21 6.35685V5.97686Z" fill="#E60A0A"></path>
@@ -386,8 +395,8 @@ const renderBill = (data) => {
           <p class="mb-0 text-dark">${formatNumber(topping.total)}đ</p>
         </div>
       </div>`;
-            })
-            .join("")}
+        })
+        .join("")}
     </div>`;
       })
       .join("");
@@ -492,7 +501,7 @@ window.handleSearch = (search_value) => {
     (element) =>
       element.name.toLowerCase().includes(search_value.toLowerCase()) == true ||
       toSlug(element.name.toLowerCase()).includes(search_value.toLowerCase()) ==
-      true
+        true
   );
   renderProduct(bill_search);
 };
@@ -625,19 +634,20 @@ window.printPage = () => {
     <p class="print-title">${element.name} (${element.size})</p>
     <p class="print-topping">
       ${element.topping
-          .map((topping) => {
-            return `<span>${topping.name} x${topping.quantity} - ${formatNumber(
-              topping.total
-            )}</span>`;
-          })
-          .join("")}
+        .map((topping) => {
+          return `<span>${topping.name} x${topping.quantity} - ${formatNumber(
+            topping.total
+          )}</span>`;
+        })
+        .join("")}
     </p>
-    <p class="print-price">${element.topping.length > 0
-          ? `<span class="old-price">${formatNumber(
+    <p class="print-price">${
+      element.topping.length > 0
+        ? `<span class="old-price">${formatNumber(
             element.price
           )}đ</span>${formatNumber(element.total)}đ`
-          : `${formatNumber(element.price)}đ`
-        }</p>
+        : `${formatNumber(element.price)}đ`
+    }</p>
     
   </div>`;
     })
@@ -645,7 +655,7 @@ window.printPage = () => {
   var printWindow = window.open("", "", "width=1280,height=720"); // mở cửa sổ in mới với kích thước 72x22mm
   printWindow.document.write("<html><head><title>Print Page</title>"); // tạo tiêu đề cho trang in
   printWindow.document.write(
-    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
+    '<style type="text/css">@media print { body { margin: 0; } }</style><link rel="stylesheet" href="../assets/css/printApp.css" />'
   ); // định dạng trang in
   printWindow.document.write(
     "</head><body style='width:272px'><div id='printContent'>"
@@ -699,55 +709,59 @@ window.printBill = () => {
           <table>
             <tbody>
             ${bills
-      .map((element) => {
-        total += element.total;
-        if (element.topping.length > 0) {
-          return `<tr>
-                  <td><span class="name">${element.name} (${element.size
-            })</span>
+              .map((element) => {
+                total += element.total;
+                if (element.topping.length > 0) {
+                  return `<tr>
+                  <td><span class="name">${element.name} (${
+                    element.size
+                  })</span>
                     ${element.topping
-              .map((topping) => {
-                return `<span class="topping">${topping.name}</span>`;
-              })
-              .join("")}
+                      .map((topping) => {
+                        return `<span class="topping">${topping.name}</span>`;
+                      })
+                      .join("")}
                   </td>
                   <td><span class="quantity">x${element.quantity}</span>
                   ${element.topping
-              .map((topping) => {
-                return `<span class="quantityMulti">${topping.quantity > 1
-                    ? `<span class="priceOne">${formatNumber(
-                      topping.price
-                    )}</span><span>x${topping.quantity}</span>`
-                    : `x${topping.quantity}`
-                  } </span>`;
-              })
-              .join("")}
+                    .map((topping) => {
+                      return `<span class="quantityMulti">${
+                        topping.quantity > 1
+                          ? `<span class="priceOne">${formatNumber(
+                              topping.price
+                            )}</span><span>x${topping.quantity}</span>`
+                          : `x${topping.quantity}`
+                      } </span>`;
+                    })
+                    .join("")}
                    </td>
                   <td><span class="total">${formatNumber(element.price)}</span>
                   ${element.topping
-              .map((topping) => {
-                return `<span class="total">${formatNumber(
-                  topping.total
-                )}</span>`;
-              })
-              .join("")}
+                    .map((topping) => {
+                      return `<span class="total">${formatNumber(
+                        topping.total
+                      )}</span>`;
+                    })
+                    .join("")}
                   </td>
                 </tr>`;
-        } else {
-          return `<tr>
-                  <td>${element.name} ${element.group == "NUOC" ? `(${element.size})` : ``
-            } </td>
-                  ${element.quantity > 1
-              ? `  <td class="priceMulti"><span class="priceOne">${formatNumber(
-                element.price
-              )}</span> x${element.quantity}</td>`
-              : `<td>x${element.quantity}</td>`
-            }
+                } else {
+                  return `<tr>
+                  <td>${element.name} ${
+                    element.group == "NUOC" ? `(${element.size})` : ``
+                  } </td>
+                  ${
+                    element.quantity > 1
+                      ? `  <td class="priceMulti"><span class="priceOne">${formatNumber(
+                          element.price
+                        )}</span> x${element.quantity}</td>`
+                      : `<td>x${element.quantity}</td>`
+                  }
                   <td>${formatNumber(element.total)}</td>
                 </tr>`;
-        }
-      })
-      .join("")}
+                }
+              })
+              .join("")}
             </tbody>
             <tfoot>
               <tr>
@@ -763,7 +777,7 @@ window.printBill = () => {
   var printWindow = window.open("", "", "width=1280,height=720");
   printWindow.document.write("<html><head><title>Print Page</title>");
   printWindow.document.write(
-    '<style type="text/css">@media print { body { margin: 0; } }</style>     <link rel="stylesheet" href="../assets/css/print.css" />'
+    '<link rel="stylesheet" href="../assets/css/printApp.css" />'
   ); // định dạng trang in
   printWindow.document.write(
     "</head><body style='width:300px'><div id='printBill'>"
@@ -818,54 +832,57 @@ window.printBillKM = () => {
           <table>
           <tbody>
           ${bills
-      .map((element) => {
-        total += element.total;
-        if (element.topping.length > 0) {
-          return `<tr>
+            .map((element) => {
+              total += element.total;
+              if (element.topping.length > 0) {
+                return `<tr>
                 <td><span class="name">${element.name} (${element.size})</span>
                   ${element.topping
-              .map((topping) => {
-                return `<span class="topping">${topping.name}</span>`;
-              })
-              .join("")}
+                    .map((topping) => {
+                      return `<span class="topping">${topping.name}</span>`;
+                    })
+                    .join("")}
                 </td>
                 <td><span class="quantity">x${element.quantity}</span>
                 ${element.topping
-              .map((topping) => {
-                return `<span class="quantityMulti">${topping.quantity > 1
-                    ? `<span class="priceOne">${formatNumber(
-                      topping.price
-                    )}</span><span>x${topping.quantity}</span>`
-                    : `x${topping.quantity}`
-                  } </span>`;
-              })
-              .join("")}
+                  .map((topping) => {
+                    return `<span class="quantityMulti">${
+                      topping.quantity > 1
+                        ? `<span class="priceOne">${formatNumber(
+                            topping.price
+                          )}</span><span>x${topping.quantity}</span>`
+                        : `x${topping.quantity}`
+                    } </span>`;
+                  })
+                  .join("")}
                  </td>
                 <td><span class="total">${formatNumber(element.price)}</span>
                 ${element.topping
-              .map((topping) => {
-                return `<span class="total">${formatNumber(
-                  topping.total
-                )}</span>`;
-              })
-              .join("")}
+                  .map((topping) => {
+                    return `<span class="total">${formatNumber(
+                      topping.total
+                    )}</span>`;
+                  })
+                  .join("")}
                 </td>
               </tr>`;
-        } else {
-          return `<tr>
-                <td>${element.name} ${element.group == "NUOC" ? `(${element.size})` : ``
-            } </td>
-                ${element.quantity > 1
-              ? `  <td class="priceMulti"><span class="priceOne">${formatNumber(
-                element.price
-              )}</span> x${element.quantity}</td>`
-              : `<td>x${element.quantity}</td>`
-            }
+              } else {
+                return `<tr>
+                <td>${element.name} ${
+                  element.group == "NUOC" ? `(${element.size})` : ``
+                } </td>
+                ${
+                  element.quantity > 1
+                    ? `  <td class="priceMulti"><span class="priceOne">${formatNumber(
+                        element.price
+                      )}</span> x${element.quantity}</td>`
+                    : `<td>x${element.quantity}</td>`
+                }
                 <td>${formatNumber(element.total)}</td>
               </tr>`;
-        }
-      })
-      .join("")}
+              }
+            })
+            .join("")}
           </tbody>
             <tfoot>
               <tr>
@@ -873,11 +890,12 @@ window.printBillKM = () => {
                 <td>${formatNumber(total)}</td>
               </tr>
               <tr>
-                <td colspan="2" style="font-weight: 400;padding: 0;font-style: italic;">Khuyến mãi ${sales[0].sale
-    }%</td>
+                <td colspan="2" style="font-weight: 400;padding: 0;font-style: italic;">Khuyến mãi ${
+                  sales[0].sale
+                }%</td>
                 <td style="padding: 0;border-bottom: 1px dashed;padding-bottom: 5px;">-${formatNumber(
-      (sales[0].sale / 100) * total
-    )}</td>
+                  (sales[0].sale / 100) * total
+                )}</td>
               </tr>
               <tr>
               <td colspan="2">Thành tiền</td>
@@ -892,7 +910,7 @@ window.printBillKM = () => {
   var printWindow = window.open("", "", "width=1280,height=720");
   printWindow.document.write("<html><head><title>Print Page</title>");
   printWindow.document.write(
-    '<link rel="stylesheet" href="../assets/css/print.css" /> <style type="text/css">@media print { body { margin: 0; } }</style>  '
+    '<link rel="stylesheet" href="../assets/css/printApp.css" /> <style type="text/css">@media print { body { margin: 0; } }</style>  '
   ); // định dạng trang in
   printWindow.document.write("</head><body><div id='printBill'>");
   printWindow.document.write(printBill.innerHTML);
