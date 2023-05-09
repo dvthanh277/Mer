@@ -1,11 +1,13 @@
 @page {
     margin: 0cm 0cm 0cm 0cm !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 @media print {
     body {
-        margin: 0;
-        padding: 0;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 }
 
