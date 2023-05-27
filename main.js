@@ -24,11 +24,11 @@ const libs = [
     module: false,
   },
   {
-    src: "js/common/firebase.js",
+    src: "./js/common/firebase.js",
     module: false,
   },
   {
-    src: "js/common/commonApi.js",
+    src: "./js/common/commonApi.js",
     module: false,
   },
 ];

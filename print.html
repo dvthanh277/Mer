@@ -1,55 +1,54 @@
 <html>
-
-<head>
-  <title>Print Page</title>
-  <style type="text/css">
-    @media print {
-      body {
-        margin: 0;
+  <head>
+    <title>Print Page</title>
+    <style type="text/css">
+      @media print {
+        body {
+          margin: 0;
+        }
       }
-    }
-  </style>
-  <link rel="stylesheet" href="./assets/css/print.css" />
-</head>
+    </style>
+    <link rel="stylesheet" href="./assets/css/print.css" />
+  </head>
 
-<body>
-  <div id="printBill">
-    <div class="logo-bill">
-      <img src="./assets/images/logoBill.png" alt="" />
-    </div>
-    <p class="bill-address bold">E39 tổ 3, ấp Phước Thiện, xã Phước Tỉnh</p>
-    <p class="bill-address">(Hẻm nhà hàng Minh Phương vào 100m)</p>
-    <p class="bill-address phone">SDT: 05634.03465</p>
-    <div class="bill-item">
-      <p class="title">PHIẾU THANH TOÁN</p>
-      <p class="bill-time">
-        <span class="time">17:18</span><span class="date">04/05</span>
-      </p>
-      <div class="items">
-        <table>
-          <tbody>
-            <tr>
-              <td>Trà sữa thái xanh (M)</td>
-              <td class="priceMulti">
-                <span class="priceOne">20,000</span> x2
-              </td>
-              <td>40,000</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="2">Tổng tiền</td>
-              <td>40,000</td>
-            </tr>
-          </tfoot>
-        </table>
+  <body style="width: 300px">
+    <div id="printBill">
+      <div class="logo-bill">
+        <img src="./assets/images/logoBill.png" alt="" />
       </div>
-      <p class="thank">♥ Cám ơn quý khách và hẹn gặp lại ♥</p>
+      <p class="bill-address bold">E39 tổ 3, ấp Phước Thiện, xã Phước Tỉnh</p>
+      <p class="bill-address">(Hẻm nhà hàng Minh Phương vào 100m)</p>
+      <p class="bill-address phone">SDT: 05634.03465</p>
+      <div class="bill-item">
+        <p class="title">PHIẾU THANH TOÁN</p>
+        <p class="bill-time">
+          <span class="time">17:18</span><span class="date">04/05</span>
+        </p>
+        <div class="items">
+          <table>
+            <tbody>
+              <tr>
+                <td>Trà sữa thái xanh (M)</td>
+                <td class="priceMulti">
+                  <span class="priceOne">20,000</span> x2
+                </td>
+                <td>40,000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">Tổng tiền</td>
+                <td>40,000</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="thank">♥ Cám ơn quý khách và hẹn gặp lại ♥</p>
+      </div>
     </div>
-  </div>
-  <button onclick="printDiv()">Print</button>
-  <script src="./js/qz-tray.js"></script>
-  <script src="./print.js"></script>
-</body>
+    <button onclick="printDiv1()">Print</button>
+    <!-- <script src="./js/qz-tray.js"></script> -->
 
+    <script src="./print.js"></script>
+  </body>
 </html>
