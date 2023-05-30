@@ -554,12 +554,20 @@
                         >
                           Tính tiền (F2)
                         </button>
+
                         <button
                           class="btn btn-danger rounded-pill ms-3"
                           onclick="printBillKM()"
                           id="khuyenmai"
                         >
                           Khuyến mãi
+                        </button>
+                        <button
+                          class="btn btn-danger ms-3 rounded-pill"
+                          id="button-countDown"
+                          onclick="cancelBill()"
+                        >
+                          X <span id="timeOut">10</span>s
                         </button>
                       </div>
                     </div>

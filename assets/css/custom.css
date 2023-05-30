@@ -170,3 +170,7 @@
 .TP010 span {
     color: #fff !important
 }
+
+#button-countDown {
+    display: none;
+}

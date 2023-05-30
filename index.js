@@ -558,7 +558,8 @@ window.createInvoice = async (sale) => {
   const rest = await API.postData("invoice/", invoices);
   newBill();
 };
-
+var bill_ago = "";
+var tem_ago = "";
 window.printPage = () => {
   if (!bills || bills.length <= 0) return;
 
@@ -599,35 +600,36 @@ window.printPage = () => {
   //     return `<p class="title">${element.name}</p><p class="price"></p>`;
   //   }
   // });
-  var printContent = document.getElementById("printContent"); // lấy nội dung muốn in
-  printContent.innerHTML = printBill
+  tem_ago = printBill
     .map((element) => {
       return ` <div class="print-item">
-    <p class="print-shop">Tiệm trà Mer</p>
-    <p class="print-time">
-      <span class="date">${date}</span><span class="time">${time}</span>
-    </p>
-    <p class="print-title">${element.name} (${element.size})</p>
-    <p class="print-topping">
-      ${element.topping
-        .map((topping) => {
-          return `<span>${topping.name} x${topping.quantity} - ${formatNumber(
-            topping.total
-          )}</span>`;
-        })
-        .join("")}
-    </p>
-    <p class="print-price">${
-      element.topping.length > 0
-        ? `<span class="old-price">${formatNumber(
-            element.price
-          )}đ</span>${formatNumber(element.total)}đ`
-        : `${formatNumber(element.price)}đ`
-    }</p>
-    
-  </div>`;
+  <p class="print-shop">Tiệm trà Mer</p>
+  <p class="print-time">
+    <span class="date">${date}</span><span class="time">${time}</span>
+  </p>
+  <p class="print-title">${element.name} (${element.size})</p>
+  <p class="print-topping">
+    ${element.topping
+      .map((topping) => {
+        return `<span>${topping.name} x${topping.quantity} - ${formatNumber(
+          topping.total
+        )}</span>`;
+      })
+      .join("")}
+  </p>
+  <p class="print-price">${
+    element.topping.length > 0
+      ? `<span class="old-price">${formatNumber(
+          element.price
+        )}đ</span>${formatNumber(element.total)}đ`
+      : `${formatNumber(element.price)}đ`
+  }</p>
+  
+</div>`;
     })
     .join("");
+  var printContent = document.getElementById("printContent"); // lấy nội dung muốn in
+  printContent.innerHTML = tem_ago;
   var printWindow = window.open("", "", "width=1280,height=720"); // mở cửa sổ in mới với kích thước 72x22mm
   printWindow.document.write("<html><head><title>Print Page</title>"); // tạo tiêu đề cho trang in
   printWindow.document.write(
@@ -642,6 +644,7 @@ window.printPage = () => {
     printWindow.close(); // đóng trang in mới sau khi in xong
   }, 500);
 };
+var timeOut = "";
 window.printBill = () => {
   if (!bills || bills.length <= 0) return;
 
@@ -666,8 +669,8 @@ window.printBill = () => {
       ? "0" + currentdate.getMinutes()
       : currentdate.getMinutes());
 
-  var printBill = document.getElementById("printBill"); // lấy nội dung muốn in
-  printBill.innerHTML = `
+  // lấy nội dung muốn in
+  bill_ago = `
   <div class="logo-bill">
         <img src="./assets/images/logoBill.png" alt="" />
       </div>
@@ -748,6 +751,8 @@ window.printBill = () => {
         <p class="thank">♥ Cám ơn quý khách và hẹn gặp lại ♥</p>
       </div>
       `;
+  var printBill = document.getElementById("printBill");
+  printBill.innerHTML = bill_ago;
   var printWindow = window.open("", "", "width=1280,height=720");
   printWindow.document.write("<html><head><title>Print Page</title>");
   printWindow.document.write(
@@ -761,7 +766,23 @@ window.printBill = () => {
     printWindow.print();
     printWindow.close();
   }, 500);
-  createInvoice(false);
+  document.querySelector("#button-countDown").style.display = "block";
+  countdown(10);
+};
+function countdown(seconds) {
+  if (seconds < 0) {
+    createInvoice(false);
+    document.querySelector("#button-countDown").style.display = "none";
+    return;
+  }
+  document.querySelector("#timeOut").innerHTML = seconds;
+  timeOut = setTimeout(function () {
+    countdown(seconds - 1);
+  }, 1000);
+}
+window.cancelBill = () => {
+  clearTimeout(timeOut);
+  document.querySelector("#button-countDown").style.display = "none";
 };
 window.printBillKM = () => {
   if (!bills || bills.length <= 0) return;
