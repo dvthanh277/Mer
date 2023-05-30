@@ -144,9 +144,6 @@ const getSales = async () => {
 const renderProduct = (data) => {
   if (data) {
     menu_items.innerHTML = data
-      .sort(function (a, b) {
-        return b.sold - a.sold;
-      })
       .map((element) => {
         return `<div class="col-12 col-md-6 col-xl-4 col-xxl-4">
         <div
