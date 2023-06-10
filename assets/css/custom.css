@@ -93,6 +93,7 @@
     width: 100%;
     z-index: 10;
     top: 0;
+    left: 0;
 }
 
 .main-noidung {
@@ -173,4 +174,14 @@
 
 #button-countDown {
     display: none;
+}
+
+
+.hide {
+    display: none;
+}
+
+.menu_input {
+    border-radius: 8px;
+    border: 1px solid #dadada
 }
