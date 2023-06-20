@@ -578,10 +578,10 @@ window.printPage = () => {
     (currentdate.getMinutes() < 10
       ? "0" + currentdate.getMinutes()
       : currentdate.getMinutes());
-
+  console.log(bills);
   var printBill = [];
   bills
-    .filter((pro) => pro.group == "NUOC")
+    // .filter((pro) => pro.group == "NUOC")
     .map((element) => {
       if (element.quantity > 1) {
         for (let i = 0; i < element.quantity; i++) {
@@ -604,7 +604,9 @@ window.printPage = () => {
   <p class="print-time">
     <span class="date">${date}</span><span class="time">${time}</span>
   </p>
-  <p class="print-title">${element.name} (${element.size})</p>
+  <p class="print-title">${element.name} ${
+        element.group === "BANH" ? `` : `(${element.size})`
+      } </p>
   <p class="print-topping">
     ${element.topping
       .map((topping) => {
